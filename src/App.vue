@@ -2,8 +2,10 @@
   <div id="app">
     <HeaderComponent />
     <img src="@/assets/greenPath_headerTransition.svg" alt="Header Transition" class="header-transition">
+    
+    <div class="content-flex-fill"></div>
+    
     <img src="@/assets/footerTransition.svg" alt="Footer Transition" class="footer-transition">
-
     <FooterComponent />
   </div>
 </template>

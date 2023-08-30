@@ -1,18 +1,20 @@
 <template>
-  <div class="header">
-    <img class="logo" src="@/assets/GP_Logo.svg" alt="Logo">
-
-    <div class="desktop-menu">
-      <nav>
-        <a href="#" class="menu-item">FAQ</a>
-        <a href="#" class="menu-item">Contact Us</a>
-        <a href="#" class="menu-item">Our Vison</a>
-      </nav>
-    </div>
-
-    <div class="mobile-menu">
-      <div class="hamburger" @click="toggleMenu">
-        <img :class="{ 'rotated': isMenuOpen }" src="@/assets/hamburger.svg" alt="Menu">
+  <div class="header container-fluid">
+    <div class="row align-items-center">
+      <div class="col">
+        <img class="logo" src="@/assets/GP_Logo.svg" alt="Logo">
+      </div>
+      <div class="col-auto desktop-menu">
+        <nav>
+          <a href="#" class="menu-item">FAQ</a>
+          <a href="#" class="menu-item">Contact Us</a>
+          <a href="#" class="menu-item">Our Vison</a>
+        </nav>
+      </div>
+      <div class="col-auto mobile-menu">
+        <div class="hamburger" @click="toggleMenu">
+          <img :class="{ 'rotated': isMenuOpen }" src="@/assets/hamburger.svg" alt="Menu">
+        </div>
       </div>
     </div>
 
@@ -26,6 +28,7 @@
     </div>
   </div>
 </template>
+
 
 <script>
 export default {

@@ -1,19 +1,16 @@
 .header {
   background-color: #344E41;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   padding: 20px;
-  position: relative; /* Dies stellt sicher, dass das Kind mit der absoluten Position relativ zum Header positioniert wird. */
+  position: relative;
 }
 
 .logo {
-  height: 50px; /* oder die gewünschte Größe */
+  height: 50px;
 }
 
 .desktop-menu nav {
   display: flex;
-  gap: 1rem; /* Zwischenraum zwischen den Menüpunkten */
+  gap: 1rem;
 }
 
 .menu-item {
@@ -32,11 +29,11 @@
 
 .hamburger {
   display: none;
-  width: 25px; /* 50% der ursprünglichen Größe */
+  width: 25px;
   position: absolute;
-  top: 20px; /* Abstand von oben */
-  right: 20px; /* Abstand von rechts */
-  cursor: pointer; /* Zeigt einen Zeiger Cursor an, wenn man darüber fährt */
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
 }
 
 .hamburger img {
@@ -51,7 +48,7 @@
 .flyout-menu {
   position: fixed;
   top: 0;
-  right: -100%; /* Menü aus dem Bildschirm schieben */
+  right: -100%;
   width: 100%;
   height: 100%;
   background-color: #02311A;
@@ -64,6 +61,12 @@
   z-index: 100;
 }
 
+.flyout-menu .hamburger {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
 .flyout-menu .menu-item {
   color: #E97908;
 }
@@ -74,9 +77,9 @@
 
 @media (max-width: 768px) {
   .desktop-menu {
-      display: none;
+    display: none;
   }
   .hamburger {
-      display: block;
+    display: block;
   }
 }
