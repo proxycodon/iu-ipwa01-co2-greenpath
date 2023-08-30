@@ -1,0 +1,71 @@
+.footer-container {
+    background-color: #344E41;
+    position: relative;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.footer-svg {
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+}
+
+.footer-svg img {
+    max-width: 80%; /* oder den gewünschten Wert. Dies stellt sicher, dass das SVG nicht zu groß wird. */
+}
+
+.footer-col {
+    flex: 1;
+    padding: 1rem;
+    color: white;
+}
+
+.address {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.legal a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    margin-bottom: 0.5rem;
+    font-size: 18px;
+}
+
+.legal a:hover {
+    font-weight: bold;
+}
+
+.social {
+    text-align: center;
+}
+
+.social-icons {
+    margin-top: 0.5rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.social-icons a img {
+    height: 24px;
+}
+
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-col, .footer-svg {
+        width: 100%;
+        text-align: center; 
+        margin-bottom: 20px;
+    }
+}

@@ -13,4 +13,10 @@ h1 {
 .header-transition {
     width: 100%;
     display: block;
-  }
+}
+
+.footer-transition {
+    width: 100%;
+    display: block;
+}
+ 

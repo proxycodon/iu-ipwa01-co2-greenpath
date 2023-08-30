@@ -1,9 +1,7 @@
 <template>
   <div class="header">
-    <!-- Logo -->
     <img class="logo" src="@/assets/GP_Logo.svg" alt="Logo">
 
-    <!-- Desktop Menu -->
     <div class="desktop-menu">
       <nav>
         <a href="#" class="menu-item">FAQ</a>
@@ -12,14 +10,12 @@
       </nav>
     </div>
 
-    <!-- Mobile Menu (Hamburger Icon) -->
     <div class="mobile-menu">
       <div class="hamburger" @click="toggleMenu">
         <img :class="{ 'rotated': isMenuOpen }" src="@/assets/hamburger.svg" alt="Menu">
       </div>
     </div>
 
-    <!-- Flyout Menu -->
     <div :class="['flyout-menu', { 'menu-open': isMenuOpen }]">
       <a href="#" class="menu-item">FAQ</a>
       <a href="#" class="menu-item">Contact Us</a>
