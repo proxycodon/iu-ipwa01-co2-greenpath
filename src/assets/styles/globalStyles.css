@@ -30,3 +30,12 @@ h1 {
 .content-flex-fill {
     flex: 1;
 }
+
+.title {
+    justify-content: center;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: bold;
+    font-size: 32px;
+    color: white;
+    margin: 20px;
+}

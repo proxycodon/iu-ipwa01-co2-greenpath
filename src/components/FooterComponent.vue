@@ -20,10 +20,11 @@
   
           <div class="col-12 col-sm-6 col-md-3 mb-4 mb-md-0 px-0 d-flex justify-content-center align-items-center">
             <div class="footer-col legal text-center">
-              <a href="#" class="custom-link d-block mb-2">Legal Notice</a>
-              <a href="#" class="custom-link d-block mb-2">Data Protection</a>
-              <a href="#" class="custom-link d-block mb-2">Privacy Policy</a>
+              <router-link to="/legal-notice" class="custom-link d-block mb-2">Legal Notice</router-link>
+              <router-link to="/data-protection" class="custom-link d-block mb-2">Data Protection</router-link>
+              <router-link to="/privacy-policy" class="custom-link d-block mb-2">Privacy Policy</router-link>
             </div>
+
           </div>
   
           <div class="col-12 col-sm-6 col-md-3 mb-4 mb-md-0 px-0 d-flex justify-content-center align-items-center">

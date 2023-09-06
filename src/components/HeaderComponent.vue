@@ -2,13 +2,16 @@
   <div class="header container-fluid">
     <div class="row align-items-center">
       <div class="col">
-        <img class="logo" src="@/assets/GP_Logo.svg" alt="Logo">
+        <router-link to="/">
+          <img class="logo" src="@/assets/GP_Logo.svg" alt="Logo">
+        </router-link>
+
       </div>
       <div class="col-auto desktop-menu">
         <nav>
-          <a href="#" class="menu-item">FAQ</a>
-          <a href="#" class="menu-item">Contact Us</a>
-          <a href="#" class="menu-item">Our Vison</a>
+          <router-link to="/faq-page" class="menu-item">FAQ</router-link>
+          <router-link to="/contact-us" class="menu-item">Contact Us</router-link>
+          <router-link to="/our-vision" class="menu-item">Our Vision</router-link>
         </nav>
       </div>
       <div class="col-auto mobile-menu">
@@ -19,9 +22,9 @@
     </div>
 
     <div :class="['flyout-menu', { 'menu-open': isMenuOpen }]">
-      <a href="#" class="menu-item">FAQ</a>
-      <a href="#" class="menu-item">Contact Us</a>
-      <a href="#" class="menu-item">Our Vision</a>
+      <router-link to="/faqpage" class="menu-item">FAQ</router-link>
+       <router-link to="/contact-us" class="menu-item">Contact Us</router-link>
+       <router-link to="/our-vision" class="menu-item">Our Vision</router-link>
       <div class="hamburger" @click="toggleMenu">
         <img :class="{ 'rotated': isMenuOpen }" src="@/assets/hamburger.svg" alt="Menu">
       </div>

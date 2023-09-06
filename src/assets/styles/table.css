@@ -17,16 +17,18 @@
 
 table th:nth-child(1) {
   width: 200px;
+  cursor: pointer;
 }
 
 table th:nth-child(2) {
   width: 150px;
+  cursor: pointer;
 }
 
 table th:nth-child(3) {
   width: 250px;
+  cursor: pointer;
 }
-
 
 .pagination {
   justify-content: center;
