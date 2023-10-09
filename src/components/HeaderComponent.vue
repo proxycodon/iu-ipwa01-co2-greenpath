@@ -22,9 +22,11 @@
     </div>
 
     <div :class="['flyout-menu', { 'menu-open': isMenuOpen }]">
-      <router-link to="/faqpage" class="menu-item">FAQ</router-link>
-       <router-link to="/contact-us" class="menu-item">Contact Us</router-link>
-       <router-link to="/our-vision" class="menu-item">Our Vision</router-link>
+      <router-link to="/faq-page" class="menu-item" @click="isMenuOpen = false">FAQ</router-link>
+<router-link to="/contact-us" class="menu-item" @click="isMenuOpen = false">Contact Us</router-link>
+<router-link to="/our-vision" class="menu-item" @click="isMenuOpen = false">Our Vision</router-link>
+
+
       <div class="hamburger" @click="toggleMenu">
         <img :class="{ 'rotated': isMenuOpen }" src="@/assets/hamburger.svg" alt="Menu">
       </div>
@@ -41,10 +43,14 @@ export default {
     };
   },
   methods: {
-    toggleMenu() {
-      this.isMenuOpen = !this.isMenuOpen;
-    }
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+  },
+  linkClicked(navigate) {
+    this.toggleMenu();
+    navigate();
   }
+}
 };
 </script>
 

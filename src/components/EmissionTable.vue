@@ -4,8 +4,8 @@
     <input type="text" v-model="searchTerm" placeholder="Search..." class="form-control mb-3">
 
     <table class="table table-bordered table-hover" v-if="paginatedData.length > 0">
-      <thead>
-    <tr>
+     <thead>
+      <tr>
 
         <th scope="col" @click="sortBy('company')">
             Company 
@@ -27,15 +27,14 @@
             <span v-if="sortKey === 'emissions' && sortOrder === -1">&#x2191;</span>
             <span v-if="sortKey !== 'emissions'">&#x2195;</span>
         </th>
-    </tr>
-</thead>
+       </tr>
+     </thead>
 
       <tbody>
-
-        <tr v-for="entry in paginatedData" :key="entry.company">
+        <tr v-for="entry in paginatedData" :key="entry.id">
           <td>{{ entry.company }}</td>
           <td>{{ entry.country }}</td>
-          <td>{{ entry.emissions }}</td>
+          <td>{{ formatNumber(entry.emissions) }}</td>
         </tr>
       </tbody>
     </table>
@@ -81,6 +80,10 @@ export default {
         if (a[key] > b[key]) return 1 * this.sortOrder;
         return 0;
       });
+    },
+    formatNumber(value) {
+      if (!value) return '';
+      return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
   },
   computed: {
