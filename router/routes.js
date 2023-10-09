@@ -5,7 +5,7 @@ import FAQPage from "../src/views/FAQPage.vue";
 import ContactUs from "../src/views/ContactUs.vue";
 import OurVision from "../src/views/OurVision.vue";
 import LegalNotice from "../src/views/LegalNotice.vue";
-import DataProtection from "../src/views/DataProtection.vue";
+import TermsConditions from "../src/views/TermsConditions.vue";
 import PrivacyPolicy from "../src/views/PrivacyPolicy.vue";
 import ThankYou from "../src/views/ThankYou.vue";
 
@@ -18,7 +18,7 @@ const router = createRouter({
         {path: "/contact-us", name: "contact-us", component: ContactUs},
         {path: "/our-vision", name: "our-vision", component: OurVision},
         {path: "/legal-notice", name: "legal-notice", component: LegalNotice},
-        {path: "/data-protection", name: "data-protection", component: DataProtection},
+        {path: "/terms-conditions", name: "terms-conditions", component: TermsConditions},
         {path: "/privacy-policy", name: "privacy-policy", component: PrivacyPolicy},
         {path: "/thank-you", name: "thank-you", component: ThankYou},
     ],
