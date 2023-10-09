@@ -83,3 +83,23 @@
     display: block;
   }
 }
+
+/*for RTL UX*/
+.rtl .logo-col {
+  order: 1;
+  text-align: right;
+}
+
+.rtl .desktop-menu nav {
+  direction: rtl;
+}
+
+.rtl .mobile-menu .hamburger {
+  left: 20px;
+  right: auto;
+}
+
+.rtl .flyout-menu .hamburger {
+  left: 20px;
+  right: auto;
+}
