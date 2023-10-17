@@ -1,7 +1,7 @@
 <template>
     <div class="contact-form-wrapper">
         <div class="title">
-            <h1 class="text-center">Contact Us</h1>
+            <h1 class="titleContentPages">Contact Us</h1>
         </div>
         <div class="contact-form mb-4">
             <!-- reCaptcha protected formspree contact form -->
@@ -85,5 +85,11 @@ export default {
 
 .remainingCharacters {
     font-size: 14px;
+}
+
+.titleContentPages {
+    width: 90vw;
+    padding: 20px;
+    margin: 0 auto;
 }
 </style>

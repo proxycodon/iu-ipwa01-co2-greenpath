@@ -1,7 +1,5 @@
 <template>
-    <div class="title">
-            <h1 class="text-center">Terms & Conditions</h1>
-        </div>
+            <h1 class="titleContentPages">Terms & Conditions</h1>
     <div class="vision-wrapper text-white">
 <p>Last updated: October 09, 2023</p>
 <p>Please read these terms and conditions carefully before using Our Service.</p>
@@ -119,5 +117,12 @@ h2 {
     padding: 20px;
     margin: 0 auto;
     background-color: #344E41;
+}
+
+.titleContentPages {
+    width: 90vw;
+    padding: 20px;
+    margin: 0 auto;
+    color: white;
 }
 </style>

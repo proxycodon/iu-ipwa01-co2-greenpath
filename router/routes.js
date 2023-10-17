@@ -7,7 +7,6 @@ import OurVision from "../src/views/OurVision.vue";
 import LegalNotice from "../src/views/LegalNotice.vue";
 import TermsConditions from "../src/views/TermsConditions.vue";
 import PrivacyPolicy from "../src/views/PrivacyPolicy.vue";
-import ThankYou from "../src/views/ThankYou.vue";
 
 
 const router = createRouter({
@@ -20,7 +19,6 @@ const router = createRouter({
         {path: "/legal-notice", name: "legal-notice", component: LegalNotice},
         {path: "/terms-conditions", name: "terms-conditions", component: TermsConditions},
         {path: "/privacy-policy", name: "privacy-policy", component: PrivacyPolicy},
-        {path: "/thank-you", name: "thank-you", component: ThankYou},
     ],
 });
 

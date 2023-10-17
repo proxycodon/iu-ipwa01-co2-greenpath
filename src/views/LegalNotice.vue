@@ -1,7 +1,5 @@
 <template>
-    <div class="title">
-            <h1 class="text-center">Legal Notice</h1>
-        </div>
+            <h1 class="titleContentPages">Legal Notice</h1>
     <div class="vision-wrapper text-white">
 
         <p>Information according to § 5 TMG</p>
@@ -46,5 +44,12 @@ h2 {
     padding: 20px;
     margin: 0 auto;
     background-color: #344E41;
+}
+
+.titleContentPages {
+    width: 90vw;
+    padding: 20px;
+    margin: 0 auto;
+    color: white;
 }
 </style>

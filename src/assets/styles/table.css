@@ -16,21 +16,28 @@
 }
 
 table th:nth-child(1) {
-  width: 200px;
+  width: 20%;
   cursor: pointer;
 }
 
 table th:nth-child(2) {
-  width: 150px;
+  width: 20%;
   cursor: pointer;
 }
 
 table th:nth-child(3) {
-  width: 250px;
+  width: 20%;
   cursor: pointer;
 }
 
 .pagination {
   justify-content: center;
   padding: 20px;
+}
+
+@media (max-width: 768px) {
+  .table th, .table td {
+    padding: 0.3rem;
+    font-size: 0.8rem;
+  }
 }

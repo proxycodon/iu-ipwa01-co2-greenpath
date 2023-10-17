@@ -1,7 +1,5 @@
 <template>
-      <div class="title">
-            <h1 class="text-center">FAQs</h1>
-        </div>
+            <h1 class="titleContentPages">FAQs</h1>
     <div class="content-wrapper">
         <div class="accordion" id="faqAccordion">
             <div v-for="(item, index) in faqs" :key="index" class="accordion-item">
@@ -66,13 +64,10 @@ export default {
     background-color: #344E41;
     
 }
-
-.title {
-    justify-content: center;
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: bold;
-    font-size: 32px;
+.titleContentPages {
+    width: 90vw;
+    padding: 20px;
+    margin: 0 auto;
     color: white;
-    margin: 20px;
 }
 </style>

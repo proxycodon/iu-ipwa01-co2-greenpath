@@ -1,7 +1,5 @@
 <template>
-    <div class="title">
-            <h1 class="text-center">Our Vision</h1>
-        </div>
+            <h1 class="titleContentPages">Our Vision</h1>
     <div class="vision-wrapper text-white">
         
         <p>At Green Path, we dream of a world where nature and humanity live together in perfect harmony. A world where every child knows the sound of babbling brooks, breathes the scent of fresh flowers, and enjoys the sight of endless green forests. We envision a future where cities and towns benefit from clean air and clear water, and where every living thing has its rightful place in the cycle of life.</p>
@@ -55,5 +53,12 @@ h2 {
     padding: 20px;
     margin: 0 auto;
     background-color: #344E41;
+}
+
+.titleContentPages {
+    width: 90vw;
+    padding: 20px;
+    margin: 0 auto;
+    color: white;
 }
 </style>

@@ -1,7 +1,5 @@
 <template>
-    <div class="title">
-            <h1 class="text-center">Privacy Policy</h1>
-        </div>
+            <h1 class="titleContentPages">Privacy Policy</h1>
     <div class="vision-wrapper text-white">
 <p>Last updated: October 09, 2023</p>
 <p>This Privacy Policy describes Our policies and procedures on the collection, use and disclosure of Your information when You use the Service and tells You about Your privacy rights and how the law protects You.</p>
@@ -192,5 +190,12 @@ h2 {
     padding: 20px;
     margin: 0 auto;
     background-color: #344E41;
+}
+
+.titleContentPages {
+    width: 90vw;
+    padding: 20px;
+    margin: 0 auto;
+    color: white;
 }
 </style>
