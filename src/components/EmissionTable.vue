@@ -1,5 +1,5 @@
 <template>
-  <div class="table container-fluid my-4">
+  <div class="table container-fluid">
 
     <input type="text" v-model="searchTerm" placeholder="Search..." class="form-control mb-3">
 
@@ -73,16 +73,25 @@ export default {
   },
   methods: {
     sortBy(key) {
-      this.sortOrder = this.sortKey === key ? this.sortOrder * -1 : 1;
-      this.sortKey = key;
-      this.emissionData.sort((a, b) => {
-        if (a[key] < b[key]) return -1 * this.sortOrder;
-        if (a[key] > b[key]) return 1 * this.sortOrder;
+  this.sortOrder = this.sortKey === key ? this.sortOrder * -1 : 1;
+  this.sortKey = key;
+
+  this.emissionData.sort((a, b) => {
+    switch (key) {
+      case 'company':
+        return (a.company < b.company ? -1 : 1) * this.sortOrder;
+      case 'country':
+        return (a.country < b.country ? -1 : 1) * this.sortOrder;
+      case 'emissions':
+        return (a.emissions < b.emissions ? -1 : 1) * this.sortOrder;
+      default:
         return 0;
-      });
-    },
+    }
+  });
+},
     formatNumber(value) {
-      if (!value) return '';
+      // Disable the ESLint warning for this particular line because the regular expression is safe
+      // eslint-disable-next-line security/detect-unsafe-regex
       return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
   },
