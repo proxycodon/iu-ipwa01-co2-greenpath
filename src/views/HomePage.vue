@@ -1,14 +1,3 @@
-<script>
-import EmissionTable from '@/components/EmissionTable.vue';
-
-export default {
-  components: {
-    EmissionTable
-  }
-}
-</script>
-
-
 <template>
     <div id="dashboard">
       
@@ -23,6 +12,16 @@ export default {
 
     </div>
   </template>
+
+<script>
+import EmissionTable from '@/components/EmissionTable.vue';
+
+export default {
+  components: {
+    EmissionTable
+  }
+}
+</script>
   
 <style scoped>
 
