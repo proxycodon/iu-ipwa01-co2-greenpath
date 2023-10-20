@@ -6,11 +6,19 @@ import FooterComponent from './components/FooterComponent.vue';
 <template>
   <div id="app">
     <HeaderComponent />
-    <img src="@/assets/greenPath_headerTransition.svg" alt="Header Transition" class="header-transition">
+    <img
+      src="@/assets/greenPath_headerTransition.svg"
+      alt="Header Transition"
+      class="header-transition"
+    />
     <div class="content-flex-fill">
       <RouterView></RouterView>
     </div>
-    <img src="@/assets/footerTransition.svg" alt="Footer Transition" class="footer-transition">
+    <img
+      src="@/assets/footerTransition.svg"
+      alt="Footer Transition"
+      class="footer-transition"
+    />
     <FooterComponent />
   </div>
 </template>
