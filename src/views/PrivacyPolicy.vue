@@ -434,6 +434,7 @@
   </template>
   
   <script>
+  // Vue.js view definition
   export default {
     name: 'PrivacyPolicy'
   }

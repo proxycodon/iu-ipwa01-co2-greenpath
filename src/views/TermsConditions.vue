@@ -290,8 +290,9 @@
   </template>
   
   <script>
+  // Vue.js view definition
   export default {
-    name: 'PrivacyPolicy'
+    name: 'TermsConditions'
   }
   </script>
   

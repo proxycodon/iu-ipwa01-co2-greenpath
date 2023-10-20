@@ -1,21 +1,37 @@
 <!DOCTYPE html>
-<html lang="">
+<html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Tangerine&display=swap" rel="stylesheet">
-
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- View settings for responsive design -->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <link rel="icon" href="/favicon.ico" />
+    <!-- Embedding Bootstrap CSS from an external CDN with SRI checking -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css"
+      integrity="sha256-fx038NkLY4U1TCrBDiu5FWPEa9eiZu01EiLryshJbCo="
+      crossorigin="anonymous"
+    />
+    <!-- Embedding DataTables Bootstrap CSS from an external CDN with SRI checking -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css"
+      integrity="sha256-4W/j2Pv3N5VfbVDhzI8SKzHFHBfaOdZ2CZ1lXfxNofU="
+      crossorigin="anonymous"
+    />
 
     <title><%= htmlWebpackPlugin.options.title %></title>
   </head>
   <body>
     <noscript>
-      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+      <strong
+        >We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work
+        properly without JavaScript enabled. Please enable it to
+        continue.</strong
+      >
     </noscript>
+    <!-- Main app container into which Vue.js renders the application -->
     <div id="app"></div>
     <!-- built files will be auto injected -->
   </body>

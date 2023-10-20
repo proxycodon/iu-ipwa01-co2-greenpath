@@ -10,15 +10,17 @@
         difference for a better tomorrow.
       </p>
     </div>
-    
+    <!-- Component for displaying CO2 emission data -->
     <EmissionTable />
   </div>
 </template>
 
 <script>
+// Import the required components
 import EmissionTable from '@/components/EmissionTable.vue';
 
 export default {
+  // Definition of the components used
   components: {
     EmissionTable
   }

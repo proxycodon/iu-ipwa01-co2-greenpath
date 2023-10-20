@@ -1,8 +1,16 @@
 <template>
+<!-- Main footer component -->
+  <!-- responsive footer transition -->
+  <img
+      src="@/assets/footerTransition.svg"
+      alt="Footer Transition"
+      class="footer-transition"
+    />
   <div class="footer-container py-4">
     <div class="container-fluid">
       <div class="row justify-content-between">
         <div class="col-12 col-sm-6 col-md-3 mb-4 mb-md-0 px-0">
+          <!-- Logo area -->
           <div class="footer-svg">
             <img
               src="@/assets/3dLogo.svg"
@@ -13,6 +21,7 @@
         </div>
 
         <div class="col-12 col-sm-6 col-md-3 mb-4 mb-md-0 px-0">
+          <!-- Address of Green Path -->
           <div class="footer-col address text-center">
             Green Path gGmbH<br />
             Singapurstraße 123<br />
@@ -21,6 +30,7 @@
         </div>
 
         <div class="col-12 col-sm-6 col-md-3 mb-4 mb-md-0 px-0">
+          <!-- Legal links -->
           <div class="footer-col legal text-center">
             <router-link to="/legal-notice" class="custom-link d-block mb-2"
               >Legal Notice</router-link
@@ -35,6 +45,7 @@
         </div>
 
         <div class="col-12 col-sm-6 col-md-3 mb-4 mb-md-0 px-0">
+          <!-- Social media links -->
           <div class="footer-col social text-center w-100">
             <span>Let's connect!</span>
             <div class="social-icons d-flex justify-content-center mt-2 gap-3">

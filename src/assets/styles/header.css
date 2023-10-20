@@ -75,7 +75,7 @@
   right: 0;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 880px) {
   .desktop-menu {
     display: none;
   }

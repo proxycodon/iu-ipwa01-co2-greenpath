@@ -11,7 +11,7 @@
           action="https://formspree.io/f/mpzgovew"
           method="POST"
         >
-          <!-- Name Field -->
+          <!-- Name field -->
           <div class="mb-3">
             <label for="name" class="form-label"
               >Name <span class="text-danger">*</span></label
@@ -26,7 +26,7 @@
             />
           </div>
   
-          <!-- Email Field -->
+          <!-- Email field -->
           <div class="mb-3">
             <label for="email" class="form-label"
               >Email address <span class="text-danger">*</span></label
@@ -41,7 +41,7 @@
             />
           </div>
   
-          <!-- Text Field -->
+          <!-- Text field -->
           <div class="mb-3">
             <label for="message" class="form-label"
               >Message <span class="text-danger">*</span></label
@@ -58,7 +58,7 @@
             <div class="remainingCharacters">{{ remainingCharacters }}/800</div>
           </div>
   
-          <!-- Checkbox -->
+          <!-- Privacy checkbox -->
           <div class="form-check mb-3">
             <input
               type="checkbox"
@@ -86,6 +86,7 @@
   
   <script>
   export default {
+      // Initial values for the contact page data
       data() {
           return {
               name: "",
@@ -95,17 +96,19 @@
           };
       },
       computed: {
+          // Calculates remaining number of characters the user can enter based on a limit of 800 characters
           remainingCharacters() {
               return 800 - this.message.length;
           }
       },
       methods: {
+          // Submitting the contact form and updating the 'submitted' status
           submitForm() {
               if (!this.privacyAccepted) {
                   alert("Please accept the privacy policy.");
                   return;
               }
-              // Directly submit the form using vue $refs against XSS
+              // Using vue.js $refs against XSS
               this.$refs.contactForm.submit();
           }
       }
