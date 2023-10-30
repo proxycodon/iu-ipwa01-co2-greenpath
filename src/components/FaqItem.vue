@@ -49,4 +49,8 @@
   }
 </script>
 
-<style scoped src="@/assets/styles/faq.css"></style>
+<style scoped>
+.accordion-item {
+    padding: 0;
+  }
+</style>

@@ -158,4 +158,48 @@ export default {
 };
 </script>
 
-<style scoped src="@/assets/styles/table.css"></style>
+<style scoped>
+.table {
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 20px;
+  width: 90vw;
+  margin: 0 auto;
+  height: 800px;
+  overflow-y: auto;
+  background-color: #344E41;
+  height: 100%;
+}
+
+.table-hover{
+  width: 100%;
+}
+
+table th:nth-child(1) {
+  width: 20%;
+  cursor: pointer;
+}
+
+table th:nth-child(2) {
+  width: 20%;
+  cursor: pointer;
+}
+
+table th:nth-child(3) {
+  width: 20%;
+  cursor: pointer;
+}
+
+.pagination {
+  justify-content: center;
+  margin: 0 auto;
+  padding-top: 20px;
+}
+
+@media (max-width: 880px) {
+  .table th, .table td {
+    padding: 0.3rem;
+    font-size: 0.8rem;
+  }
+}
+</style>

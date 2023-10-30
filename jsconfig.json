@@ -15,5 +15,6 @@
       "dom.iterable",
       "scripthost"
     ]
-  }
+  },
+  "exclude": ["**/*.test.js", "node_modules"]
 }

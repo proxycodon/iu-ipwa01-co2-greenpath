@@ -115,4 +115,26 @@
   };
   </script>
   
-  <style scoped src="@/assets/styles/contactUs.css"></style>
+<style scoped>
+.contact-form-wrapper {
+    color: white;
+  }
+  
+  .contact-form {
+    width: 90vw;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 0 auto;
+    background-color: #344e41;
+  }
+  
+  .remainingCharacters {
+    font-size: 14px;
+  }
+  
+  .titleContentPages {
+    width: 90vw;
+    padding: 20px;
+    margin: 0 auto;
+  }
+</style>

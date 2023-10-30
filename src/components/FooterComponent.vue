@@ -81,4 +81,28 @@ export default {
 };
 </script>
 
-<style scoped src="@/assets/styles/footer.css"></style>
+<style scoped>
+.footer-container {
+    background-color: #344E41;
+}
+
+.custom-link, .footer-col {
+    color: white;
+    text-decoration: none;
+}
+
+.custom-link:hover {
+    font-weight: bold;
+    color: white;
+}
+
+.footer-svg img {
+    max-width: 80%; 
+}
+
+.address {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+</style>
