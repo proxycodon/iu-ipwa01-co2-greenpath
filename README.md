@@ -25,3 +25,21 @@ npm run lint
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 # iu-ipwa01-co2-greenpath
+
+## SSL Configuration
+
+This project uses a self-signed SSL certificate for demo purposes. When you first access the application, your browser may display a security warning.
+
+Here's how to bypass the warning on some common browsers:
+
+### Chrome:
+1. Click on "Advanced".
+2. Click on "Proceed to localhost (unsafe)".
+
+### Firefox:
+1. Click on "Advanced".
+2. Click on "Add Exception" and then "Confirm Security Exception".
+
+### Safari:
+1. Click on "visit this website".
+2. Enter your password if prompted.
