@@ -1,12 +1,35 @@
 <template>
   <div class="table container-fluid">
-    <!-- Search field for filtering the table entries -->
-    <input
-      type="text"
-      v-model="searchTerm"
-      placeholder="Search..."
-      class="form-control mb-3"
-    />
+    <!-- Row for filters and search function-->
+    <div class="row mb-3">      
+      <!-- Column for company filter -->
+      <div class="col-md-4">
+        <select v-model="filterCompany" class="form-control">
+          <option value="">All Companies</option>
+          <option v-for="company in uniqueCompanies" :key="company" :value="company">
+            {{ company }}
+          </option>
+        </select>
+      </div>
+       <!-- Column for country filter -->
+       <div class="col-md-4">
+        <select v-model="filterCountry" class="form-control">
+          <option value="">All Countries</option>
+          <option v-for="country in uniqueCountries" :key="country" :value="country">
+            {{ country }}
+          </option>
+        </select>
+      </div>
+      <!-- Column for search input -->
+      <div class="col-md-4">
+        <input
+          type="text"
+          v-model="searchTerm"
+          placeholder="Search for..."
+          class="form-control"
+        />
+      </div>
+    </div>
     <!-- Table is only displayed if there is data to display -->
     <table
       class="table table-bordered table-hover"
@@ -55,12 +78,14 @@
 
       <!-- Body of the table showing the emission data and country for each company -->
       <tbody>
-        <tr v-for="entry in paginatedData" :key="entry.id">
-          <td>{{ entry.company }}</td>
-          <td>{{ entry.country }}</td>
-          <td>{{ formatNumber(entry.emissions) }}</td>
-        </tr>
-      </tbody>
+    <tr v-for="entry in paginatedData" :key="entry.id">
+<!-- Sanitize data before rendering -->
+      <td v-html="sanitize(entry.company)"></td>  
+      <td v-html="sanitize(entry.country)"></td> 
+      <td>{{ formatNumber(entry.emissions) }}</td>
+    </tr>
+  </tbody>
+
     </table>
 
     <!-- Pagination component for navigating through the table pages -->
@@ -88,13 +113,16 @@
       </li>
     </ul>
 
-    <div v-else class="text-danger">Nothing found!</div>
+    <div v-else class="text-danger">Nothing found! Please adjust your filters or search parameters.</div>
   </div>
 </template>
 
 <script>
 // Import emission data from external JSON file
 import emissionData from '@/emission-data.json';
+//Import DOMPurify
+import DOMPurify from "dompurify";
+
 
 export default {
   data() {
@@ -105,14 +133,21 @@ export default {
       sortKey: '',
       sortOrder: 1,
       currentPage: 1,
-      itemsPerPage: 10
+      itemsPerPage: 10,
+      filterCountry: '',
+      filterCompany: ''
     };
   },
   methods: {
+    // Method to sanitize data
+    sanitize(input) {
+      return DOMPurify.sanitize(input);
+    },
     // Method for sorting emissions data according to specific key
     sortBy(key) {
   this.sortOrder = this.sortKey === key ? this.sortOrder * -1 : 1;
   this.sortKey = key;
+  
 
   this.emissionData.sort((a, b) => {
     switch (key) {
@@ -135,26 +170,44 @@ export default {
     }
   },
   computed: {
-    // Calculated property that filters the emission data based on the search term
-    filteredData() {
-      return this.emissionData.filter(entry =>
-        entry.company.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-        entry.country.toLowerCase().includes(this.searchTerm.toLowerCase())
-      );
-    },
-
-    // Calculated property paginating the emission data based on the current page
-    paginatedData() {
-      const start = (this.currentPage - 1) * this.itemsPerPage;
-      const end = start + this.itemsPerPage;
-      return this.filteredData.slice(start, end);
-    },
-
-    // Calculated the total number of pages based on the number of filtered data and entries per page
-    totalPages() {
-      return Math.ceil(this.filteredData.length / this.itemsPerPage);
-    }
+  sanitizedSearchTerm() {
+    return DOMPurify.sanitize(this.searchTerm);
+  },
+  // Calculated property that filters the emission data based on the search term, country, and company filters
+  filteredData() {
+    return this.emissionData.filter(entry =>
+      (this.filterCountry === '' || entry.country === this.filterCountry) &&
+      (this.filterCompany === '' || entry.company === this.filterCompany) &&
+      (entry.company.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+       entry.country.toLowerCase().includes(this.searchTerm.toLowerCase()))
+    );
+  },
+  
+  // Calculated property paginating the emission data based on the current page
+  paginatedData() {
+    const start = (this.currentPage - 1) * this.itemsPerPage;
+    const end = start + this.itemsPerPage;
+    return this.filteredData.slice(start, end);
+  },
+  
+  // Calculated the total number of pages based on the number of filtered data and entries per page
+  totalPages() {
+    return Math.ceil(this.filteredData.length / this.itemsPerPage);
+  },
+  
+  // Get a list of unique countries from the emission data for the country filter dropdown
+  uniqueCountries() {
+    const countries = this.emissionData.map(entry => entry.country);
+    return [...new Set(countries)];
+  },
+  
+  // Get a list of unique companies from the emission data for the company filter dropdown
+  uniqueCompanies() {
+    const companies = this.emissionData.map(entry => entry.company);
+    return [...new Set(companies)];
   }
+}
+
 };
 </script>
 
