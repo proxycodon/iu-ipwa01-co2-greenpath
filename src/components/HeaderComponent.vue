@@ -186,6 +186,10 @@ export default {
   .hamburger {
     display: block;
   }
+
+  .logo {
+    max-width: 95%;
+  }
 }
 
 /*for RTL UX*/

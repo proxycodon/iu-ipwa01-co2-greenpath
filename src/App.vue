@@ -43,12 +43,6 @@ h2 {
     min-height: 100vh;
 }
 
-.header-transition,
-.footer-transition {
-    width: 100%;
-    display: block;
-}
-
 .content-flex-fill {
     flex: 1;
     background: #171611;

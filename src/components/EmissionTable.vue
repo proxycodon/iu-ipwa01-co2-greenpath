@@ -254,5 +254,8 @@ table th:nth-child(3) {
     padding: 0.3rem;
     font-size: 0.8rem;
   }
+  .col-md-4 {
+    padding-top: 10px;
+  }
 }
 </style>
