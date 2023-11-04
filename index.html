@@ -21,18 +21,17 @@
       crossorigin="anonymous"
     />
 
-    <title><%= htmlWebpackPlugin.options.title %></title>
+    <title>Green Path</title>
   </head>
   <body>
     <noscript>
-      <strong
-        >We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work
+      <strong>We're sorry but this app doesn't work
         properly without JavaScript enabled. Please enable it to
-        continue.</strong
-      >
+        continue.</strong>
     </noscript>
+     
     <!-- Main app container into which Vue.js renders the application -->
     <div id="app"></div>
-    <!-- built files will be auto injected -->
+    <script type="module" src="/src/main.js"></script>
   </body>
 </html>
