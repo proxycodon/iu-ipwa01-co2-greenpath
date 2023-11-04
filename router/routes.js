@@ -1,5 +1,5 @@
 // Import the required functions and modules from Vue.js router
-import { createRouter, createWebHashHistory } from "vue-router";
+import { createRouter, createWebHistory } from "vue-router";
 
 // Import the individual Vue.js views to be routed
 import HomePage from "../src/views/HomePage.vue";
@@ -13,7 +13,7 @@ import PrivacyPolicy from "../src/views/PrivacyPolicy.vue";
 // Creation of the router with the defined routes
 const router = createRouter({
     // Using WebHashHistory for the routes (URLs with #)
-    history: createWebHashHistory(),
+    history: createWebHistory(),
     routes: [
         // Definition of the individual routes and assignment to the Vue.js views
         {path: "/", name: "index", component: HomePage},
