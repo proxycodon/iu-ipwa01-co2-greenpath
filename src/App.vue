@@ -1,19 +1,27 @@
-<script setup>
-// Import main components for header and footer
-import HeaderComponent from './components/HeaderComponent.vue';
-import FooterComponent from './components/FooterComponent.vue';
-</script>
-
 <template>
-  <div id="app">
+  <div id="app" :dir="alignment">
     <HeaderComponent />
-      <!-- View area where pages specified by the router are rendered -->
-      <div class="content-flex-fill">
-        <RouterView></RouterView>
-      </div>
+    <div class="content-flex-fill">
+      <RouterView></RouterView>
+    </div>
     <FooterComponent />
   </div>
 </template>
+
+<script setup>
+import { computed, ref } from 'vue';
+import HeaderComponent from './components/HeaderComponent.vue';
+import FooterComponent from './components/FooterComponent.vue';
+
+// Checking the user language and adjusting RTL if required
+const rtlLanguages = ["ar", "arc", "dv", "fa", "ha", "he", "khw", "ks", "ku", "ps", "ur", "yi"];
+
+const language = ref(navigator.language || navigator.userLanguage);
+
+const alignment = computed(() => {
+  return rtlLanguages.includes(language.value.split('-')[0]) ? 'rtl' : 'ltr';
+});
+</script>
 
 <style>
 body, html {

@@ -1,11 +1,6 @@
 <template>
-<!-- 
-Test to identify language and validate RTL modifications
-<div>Current language: {{ currentLanguage }}</div>
--->
-
-<!-- Main header component -->
-<div :class="['header container-fluid', { 'rtl': isRTL }]">    
+  <!-- Main header component -->
+  <div class="header container-fluid">    
     <!-- Logo and main navigation area -->
     <div class="row align-items-center">
       <!-- Logo area -->
@@ -76,17 +71,7 @@ export default {
       isMenuOpen: false
     };
   },
-  // Checking the user language and adjusting RTL if required
-  computed: {
-    currentLanguage() {
-        return navigator.language;
-    },
-    isRTL() {
-        const rtlLanguages = ["ar", "arc", "dv", "fa", "ha", "he", "khw", "ks", "ku", "ps", "ur", "yi"];
-        const userLanguage = this.currentLanguage.split('-')[0];
-        return rtlLanguages.includes(userLanguage);
-    }
-},
+ 
   methods: {
     // Switching the menu stage (open/closed)
     toggleMenu() {
@@ -190,25 +175,5 @@ export default {
   .logo {
     max-width: 95%;
   }
-}
-
-/*for RTL UX*/
-.rtl .logo-col {
-  order: 1;
-  text-align: right;
-}
-
-.rtl .desktop-menu nav {
-  direction: rtl;
-}
-
-.rtl .mobile-menu .hamburger {
-  left: 20px;
-  right: auto;
-}
-
-.rtl .flyout-menu .hamburger {
-  left: 20px;
-  right: auto;
 }
 </style>
