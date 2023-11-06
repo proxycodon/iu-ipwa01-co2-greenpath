@@ -45,6 +45,10 @@ h2 {
     font-size: 20px;
   }
 
+h3 {
+  font-size: 18px;
+}
+
 #app {
     display: flex;
     flex-direction: column;

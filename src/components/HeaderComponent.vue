@@ -1,8 +1,8 @@
 <template>
   <!-- Main header component -->
-  <div class="header container-fluid">    
+  <div class="header container-fluid" :class="{ 'rtl': isRtl }">    
     <!-- Logo and main navigation area -->
-    <div class="row align-items-center">
+    <div class="row align-items-center justify-content-between">
       <!-- Logo area -->
       <div class="col logo-col">
         <router-link to="/">
@@ -68,7 +68,8 @@
 export default {
   data() {
     return {
-      isMenuOpen: false
+      isMenuOpen: false,
+      isRtl: this.$root.alignment === 'rtl'
     };
   },
  
@@ -164,16 +165,61 @@ export default {
   right: 0;
 }
 
+/* RTL Styling */
+[dir="rtl"] .flyout-menu {
+  right: auto;
+  left: -100%;
+  transition: left 0.3s ease;
+}
+
+[dir="rtl"] .menu-open {
+  left: 0;
+}
+
+[dir="rtl"] .hamburger {
+  right: auto;
+  left: 20px;
+}
+
+[dir="rtl"] img.rotated {
+  left: 20px;
+}
+
+
 @media (max-width: 880px) {
+  .row {
+    flex-wrap: nowrap;
+  }
+
+  .logo-col, .mobile-menu {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logo-col {
+    justify-content: flex-start;
+  }
+
+  .mobile-menu {
+    justify-content: flex-end;
+  }
+
   .desktop-menu {
     display: none;
   }
+
   .hamburger {
-    display: block;
+    display: flex;
+    position: relative;
+    top: 0;
+    right: 0;
   }
 
   .logo {
-    max-width: 95%;
+    height: auto;
+    width: 100%;
   }
 }
 </style>
