@@ -1,27 +1,35 @@
 <template>
   <div class="table container-fluid">
     <!-- Row for filters and search function-->
-    <div class="row mb-3">      
+    <div class="row mb-3">
       <!-- Column for company filter -->
       <div class="col-md-4">
         <select v-model="filterCompany" class="form-control">
           <option value="">All Companies</option>
-          <option v-for="company in uniqueCompanies" :key="company" :value="company">
+          <option
+            v-for="company in uniqueCompanies"
+            :key="company"
+            :value="company"
+          >
             {{ company }}
           </option>
         </select>
       </div>
-       <!-- Column for country filter -->
-       <div class="col-md-4">
+      <!-- Column for country filter -->
+      <div class="col-md-4 mt-1">
         <select v-model="filterCountry" class="form-control">
           <option value="">All Countries</option>
-          <option v-for="country in uniqueCountries" :key="country" :value="country">
+          <option
+            v-for="country in uniqueCountries"
+            :key="country"
+            :value="country"
+          >
             {{ country }}
           </option>
         </select>
       </div>
       <!-- Column for search input -->
-      <div class="col-md-4">
+      <div class="col-md-4 mt-1">
         <input
           type="text"
           v-model="searchTerm"
@@ -78,15 +86,29 @@
 
       <!-- Body of the table showing the emission data and country for each company -->
       <tbody>
-    <tr v-for="entry in paginatedData" :key="entry.id">
-<!-- Sanitize data before rendering -->
-      <td v-html="sanitize(entry.company)"></td>  
-      <td v-html="sanitize(entry.country)"></td> 
-      <td>{{ formatNumber(entry.emissions) }}</td>
-    </tr>
-  </tbody>
-
+        <tr v-for="entry in paginatedData" :key="entry.id">
+          <!-- Sanitize data before rendering -->
+          <td v-html="sanitize(entry.company)"></td>
+          <td v-html="sanitize(entry.country)"></td>
+          <td>{{ formatNumber(entry.emissions) }}</td>
+        </tr>
+      </tbody>
     </table>
+    <!-- Row for items per page selection -->
+    <div class="row mt-3 justify-content-end">
+      <div class="col-md-2">
+        <select
+          id="entriesPerPageSelect"
+          v-model="itemsPerPage"
+          class="form-control"
+        >
+          <option value="10">10 Entries per page</option>
+          <option value="50">50 Entries per page</option>
+          <option value="100">100 Entries per page</option>
+          <option :value="allItemsValue">All Entries</option>
+        </select>
+      </div>
+    </div>
 
     <!-- Pagination component for navigating through the table pages -->
     <ul class="pagination" v-if="paginatedData.length > 0">
@@ -113,7 +135,9 @@
       </li>
     </ul>
 
-    <div v-else class="text-danger">Nothing found! Please adjust your filters or search parameters.</div>
+    <div v-else class="text-danger">
+      Nothing found! Please adjust your filters or search parameters.
+    </div>
   </div>
 </template>
 
@@ -135,7 +159,8 @@ export default {
       currentPage: 1,
       itemsPerPage: 10,
       filterCountry: '',
-      filterCompany: ''
+      filterCompany: '',
+      allItemsValue: 10000
     };
   },
   methods: {
@@ -147,7 +172,7 @@ export default {
     sortBy(key) {
   this.sortOrder = this.sortKey === key ? this.sortOrder * -1 : 1;
   this.sortKey = key;
-  
+
 
   this.emissionData.sort((a, b) => {
     switch (key) {
@@ -182,25 +207,25 @@ export default {
        entry.country.toLowerCase().includes(this.searchTerm.toLowerCase()))
     );
   },
-  
+
   // Calculated property paginating the emission data based on the current page
   paginatedData() {
     const start = (this.currentPage - 1) * this.itemsPerPage;
-    const end = start + this.itemsPerPage;
+    const end = this.itemsPerPage === this.allItemsValue ? this.filteredData.length : start + this.itemsPerPage;
     return this.filteredData.slice(start, end);
   },
-  
+
   // Calculated the total number of pages based on the number of filtered data and entries per page
   totalPages() {
     return Math.ceil(this.filteredData.length / this.itemsPerPage);
   },
-  
+
   // Get a list of unique countries from the emission data for the country filter dropdown
   uniqueCountries() {
     const countries = this.emissionData.map(entry => entry.country);
     return [...new Set(countries)];
   },
-  
+
   // Get a list of unique companies from the emission data for the company filter dropdown
   uniqueCompanies() {
     const companies = this.emissionData.map(entry => entry.company);
@@ -220,11 +245,11 @@ export default {
   margin: 0 auto;
   height: 800px;
   overflow-y: auto;
-  background-color: #344E41;
+  background-color: #344e41;
   height: 100%;
 }
 
-.table-hover{
+.table-hover {
   width: 100%;
 }
 
@@ -250,12 +275,10 @@ table th:nth-child(3) {
 }
 
 @media (max-width: 880px) {
-  .table th, .table td {
+  .table th,
+  .table td {
     padding: 0.3rem;
     font-size: 0.8rem;
-  }
-  .col-md-4 {
-    padding-top: 10px;
   }
 }
 </style>
