@@ -3,7 +3,7 @@
     <!-- Row for filters and search function-->
     <div class="row mb-3">
       <!-- Column for company filter -->
-      <div class="col-md-4">
+      <div class="col-md-4 mt-1">
         <select v-model="filterCompany" class="form-control">
           <option value="">All Companies</option>
           <option
