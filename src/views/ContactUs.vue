@@ -1,8 +1,14 @@
 <template>
     <div class="contact-form-wrapper">
-      <div class="title">
         <h1 class="titleContentPages">Contact Us</h1>
-      </div>
+      <div class="introText">
+      <p>
+        Do you have any questions, suggestions or have you discovered an error? Do not hesitate to contact us. 
+        Our team is always happy to help and will get back to you shortly. 
+        Your feedback is important to us and helps us to continuously improve our service. 
+        We look forward to hearing from you!
+      </p>
+    </div>
       <div class="contact-form mb-4">
         <!-- reCaptcha protected formspree contact form -->
         <form

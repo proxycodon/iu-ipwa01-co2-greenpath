@@ -12,7 +12,7 @@ import PrivacyPolicy from "../src/views/PrivacyPolicy.vue";
 
 // Creation of the router with the defined routes
 const router = createRouter({
-    // Using WebHashHistory for the routes (URLs with #)
+    // Using WebHistory for the routes
     history: createWebHistory(),
     routes: [
         // Definition of the individual routes and assignment to the Vue.js views

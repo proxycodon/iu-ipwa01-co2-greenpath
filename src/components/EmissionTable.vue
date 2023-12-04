@@ -87,15 +87,14 @@
       <!-- Body of the table showing the emission data and country for each company -->
       <tbody>
         <tr v-for="entry in paginatedData" :key="entry.id">
-          <!-- Sanitize data before rendering -->
-          <td v-html="sanitize(entry.company)"></td>
-          <td v-html="sanitize(entry.country)"></td>
+          <td>{{ entry.company }}</td>
+          <td>{{ entry.country }}</td>
           <td>{{ formatNumber(entry.emissions) }}</td>
         </tr>
       </tbody>
     </table>
     <!-- Row for items per page selection -->
-    <div class="row mt-3 justify-content-end">
+    <div class="row mt-3 justify-content-start">
       <div class="col-md-2">
         <select
           id="entriesPerPageSelect"
@@ -138,6 +137,15 @@
     <div v-else class="text-danger">
       Nothing found! Please adjust your filters or search parameters.
     </div>
+
+    <div class="row mt-3 justify-content-center">
+    <div class="col-md-4 text-center">
+      <router-link to="/contact-us" class="btn btn-danger report-bug-button">
+        Report an Error
+      </router-link>
+
+    </div>
+  </div>
   </div>
 </template>
 
@@ -273,6 +281,11 @@ table th:nth-child(3) {
   margin: 0 auto;
   padding-top: 20px;
 }
+
+.report-bug-button {
+    background-color: #dc3545;
+    color: white;
+  }
 
 @media (max-width: 880px) {
   .table th,

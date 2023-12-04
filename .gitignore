@@ -23,3 +23,6 @@ pnpm-debug.log*
 
 # SSL certificates
 ssl/
+
+#ESLint Report
+eslint-report.html

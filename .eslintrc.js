@@ -1,5 +1,12 @@
-export default {
+
+//eslintrc.js
+
+module.exports = {
     root: true,
+    globals: {
+        module: 'writable',
+        process: 'readonly'
+    },
     env: {
         es2021: true
     },
@@ -13,4 +20,6 @@ export default {
         'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
         'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off'
     }
-}
+};
+
+
