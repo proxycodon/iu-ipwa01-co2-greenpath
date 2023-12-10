@@ -77,7 +77,7 @@
               I have read and accept the
               <router-link to="/Privacy-Policy" target="_blank" rel="noopener"
                 >Privacy Policy</router-link
-              >.
+              >. <span class="text-danger">*</span>
             </label>
           </div>
   
