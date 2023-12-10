@@ -202,6 +202,15 @@ export default {
       return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
   },
+  // Observer for 'itemsPerPage': Resets the current page if the number of items per page is changed
+  watch: {
+    itemsPerPage(newVal, oldVal) {
+      if (newVal !== oldVal) {
+        this.currentPage = 1;
+      }
+    }
+  },
+
   computed: {
   sanitizedSearchTerm() {
     return DOMPurify.sanitize(this.searchTerm);
@@ -225,8 +234,9 @@ export default {
 
   // Calculated the total number of pages based on the number of filtered data and entries per page
   totalPages() {
-    return Math.ceil(this.filteredData.length / this.itemsPerPage);
-  },
+      const totalEntries = this.filteredData.length;
+      return Math.ceil(totalEntries / this.itemsPerPage);
+    },
 
   // Get a list of unique countries from the emission data for the country filter dropdown
   uniqueCountries() {

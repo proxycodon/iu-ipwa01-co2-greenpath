@@ -2,13 +2,13 @@
 import { createRouter, createWebHistory } from "vue-router";
 
 // Import the individual Vue.js views to be routed
-import HomePage from "../src/views/HomePage.vue";
-import FaqPage from "../src/views/FaqPage.vue";
-import ContactUs from "../src/views/ContactUs.vue";
-import OurVision from "../src/views/OurVision.vue";
-import LegalNotice from "../src/views/LegalNotice.vue";
-import TermsConditions from "../src/views/TermsConditions.vue";
-import PrivacyPolicy from "../src/views/PrivacyPolicy.vue";
+import HomePage from "@/views/HomePage.vue";
+import FaqPage from "@/views/FaqPage.vue";
+import ContactUs from "@/views/ContactUs.vue";
+import OurVision from "@/views/OurVision.vue";
+import LegalNotice from "@/views/LegalNotice.vue";
+import TermsConditions from "@/views/TermsConditions.vue";
+import PrivacyPolicy from "@/views/PrivacyPolicy.vue";
 
 // Creation of the router with the defined routes
 const router = createRouter({
