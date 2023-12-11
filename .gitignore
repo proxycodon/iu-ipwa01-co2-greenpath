@@ -22,7 +22,10 @@ pnpm-debug.log*
 *.sw?
 
 # SSL certificates
-ssl/
+key.pem
+key-unencrypted.pem
+cert.pem
+
 
 #ESLint Report
 eslint-report.html

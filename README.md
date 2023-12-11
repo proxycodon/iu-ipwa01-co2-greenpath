@@ -27,7 +27,13 @@ See [Configuration Reference](https://vitejs.dev/guide/cli.html).
 
 ## SSL Configuration
 
-This project uses a self-signed SSL certificate for demo purposes. When you first access the application, your browser may display a security warning.
+This project uses a self-signed SSL certificate for demo purposes. Cloning this repository requires you to create a self-signed SSL certificate in order to start the server.
+
+```
+openssl req -newkey rsa:2048 -new -nodes -x509 -days 3650 -keyout key-unencrypted.pem -out cert.pem
+```
+
+When you first access the application, your browser may display a security warning.
 
 Here's how to bypass the warning on some common browsers:
 
