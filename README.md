@@ -8,9 +8,22 @@ npm install
 ```
 
 ### Compiles and hot-reloads for development
+
+To start the development environment, both the frontend and backend server must be started.
+
+1. Start the backend server:
+```
+node server/server.js
+```
+
+This server runs on port 3000 by default.
+
+2. Start the frontend in a new terminal tab:
 ```
 npm run dev
 ```
+
+The frontend runs on port 8080 by default.
 
 ### Compiles and minifies for production
 ```

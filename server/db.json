@@ -1,0 +1,147 @@
+{
+    "faqs": [
+    { 
+        "id": 1,
+        "question": "Why is it important to track the carbon footprint?", 
+        "answer": "Our carbon footprint tells us how big our individual or collective contribution to the greenhouse effect is. By tracking and understanding it, we can take targeted action to reduce it and thus actively contribute to environmental protection."
+    },
+    {
+        "id": 2,
+        "question": "What can I do to reduce my own carbon footprint?",
+        "answer": "Start saving energy at home. This can mean switching to energy-efficient light bulbs, using thermostats wisely and turning off appliances when not in use. Also consider investing in energy-efficient appliances. Wherever possible, use public transportation, bicycles or walk. Not only will this reduce your carbon footprint, but it can also help reduce traffic congestion in cities. Air travel contributes significantly to global CO2 emissions. Consider whether a meeting really needs to be held in person or if it can be held online as an alternative. For vacation travel, you might consider closer destinations. Rethink how often and how much you buy. Producing, transporting and disposing of products creates CO2 emissions. By buying long-lasting products and reducing your overall consumption, you can reduce your footprint. If you have the option, consider switching to renewable energy sources such as solar or wind. Many energy providers now offer renewable energy options."
+    },
+    {
+        "id": 3,
+        "question": "What does \"t CO₂\" mean?",
+        "answer": "The abbreviation \"t CO₂\" stands for \"tons of carbon dioxide\". It is used to express the amount of carbon dioxide (CO₂) in tons. Expressing them in metric tons provides a tangible representation of these emissions and facilitates the comparison and quantification of reduction measures."
+    },
+    {
+        "id": 4,
+        "question": "Why should I care about my carbon footprint when big companies emit much more?",
+        "answer": "While large companies and industries produce significant emissions, every individual plays a role. Individual actions can add up and make a difference, especially if they inspire others to take action as well."
+    }
+    ],
+    
+    "emissions": [
+        {
+          "id": 1,
+          "company": "TechNova",
+          "country": "USA",
+          "emissions": 10500
+        },
+        {
+          "id": 2,
+          "company": "OptiServe",
+          "country": "China",
+          "emissions": 39200
+        },
+        {
+          "id": 3,
+          "company": "MegaCorp",
+          "country": "USA",
+          "emissions": 18750
+        },
+        {
+          "id": 4,
+          "company": "BrightSolutions",
+          "country": "USA",
+          "emissions": 12500
+        },
+        {
+          "id": 5,
+          "company": "ElectroMod",
+          "country": "Germany",
+          "emissions": 13400
+        },
+        {
+          "id": 6,
+          "company": "QuantTech",
+          "country": "China",
+          "emissions": 31100
+        },
+        {
+          "id": 7,
+          "company": "NexaWave",
+          "country": "Spain",
+          "emissions": 9850
+        },
+        {
+          "id": 8,
+          "company": "InfraTel",
+          "country": "Italy",
+          "emissions": 11250
+        },
+        {
+          "id": 9,
+          "company": "UltraCore",
+          "country": "USA",
+          "emissions": 10750
+        },
+        {
+          "id": 10,
+          "company": "DeltaSys",
+          "country": "Brazil",
+          "emissions": 8900
+        },
+        {
+          "id": 11,
+          "company": "TeraMind",
+          "country": "Germany",
+          "emissions": 9150
+        },
+        {
+          "id": 12,
+          "company": "SolarTech",
+          "country": "India",
+          "emissions": 13000
+        },
+        {
+          "id": 13,
+          "company": "NexaNet",
+          "country": "South Korea",
+          "emissions": 10250
+        },
+        {
+          "id": 14,
+          "company": "FutureSoft",
+          "country": "China",
+          "emissions": 14100
+        },
+        {
+          "id": 15,
+          "company": "QuantumWave",
+          "country": "Japan",
+          "emissions": 11350
+        },
+        {
+          "id": 16,
+          "company": "EcoTech",
+          "country": "Germany",
+          "emissions": 9350
+        },
+        {
+          "id": 17,
+          "company": "VirtuServe",
+          "country": "Norway",
+          "emissions": 8900
+        },
+        {
+          "id": 18,
+          "company": "LogicSolve",
+          "country": "Sweden",
+          "emissions": 10800
+        },
+        {
+          "id": 19,
+          "company": "SynthTech",
+          "country": "Denmark",
+          "emissions": 9500
+        },
+        {
+          "id": 20,
+          "company": "UltraLogic",
+          "country": "Germany",
+          "emissions": 9400
+        }
+      ]
+}

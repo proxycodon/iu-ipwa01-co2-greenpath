@@ -16,21 +16,39 @@
   </template>
   
   <script>
-  // Import the required components and data from components and external JSON
+  // Import FAQ item component and API
   import FaqItem from '@/components/FaqItem.vue';
-  import faqsData from '@/faqs.json';
+  import api from '@/services/api';
   
   export default {
-      // Definition of the FaqItem component and its data
-      components: {
-          FaqItem
-      },
-      data() {
-          return {
-              faqs: faqsData
-          };
+    components: {
+      FaqItem
+    },
+    data() {
+      return {
+        // Array for saving the FAQ data
+        faqs: []
+      };
+    },
+    // Loads FAQ data when component is created
+    async created() {
+      await this.fetchFaqsData();
+    },
+    methods: {
+      async fetchFaqsData() {
+        try {
+          // API request to get the FAQ data
+          const response = await api.getFaqs();
+          console.log('FAQ data loaded', response.data);
+          // Save the loaded data in the 'faqs' array
+          this.faqs = response.data;
+          //Troubleshooting
+        } catch (error) {
+          console.error("There was an error fetching the FAQ data", error);
+        }
       }
-  }
+    }
+  };
   </script>
   
 <style scoped>

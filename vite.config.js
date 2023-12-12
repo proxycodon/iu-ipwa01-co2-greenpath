@@ -19,8 +19,9 @@ export default defineConfig({
   },
   server: {
     https: {
-      key: fs.readFileSync('./ssl/key-unencrypted.pem'),
-      cert: fs.readFileSync('./ssl/cert.pem'),
+      key: fs.readFileSync('./key-unencrypted.pem'),
+      cert: fs.readFileSync('./cert.pem'),
     },
+    port: 8080,
   },
 });

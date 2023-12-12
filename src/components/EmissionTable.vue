@@ -150,17 +150,13 @@
 </template>
 
 <script>
-// Import emission data from external JSON file
-import emissionData from '@/emission-data.json';
-//Import DOMPurify
-import DOMPurify from "dompurify";
-
+// Import API for communication with the backend
+import api from '@/services/api';
 
 export default {
   data() {
-    // Defining the reactive data for the component
     return {
-      emissionData: emissionData,
+      emissions: [],
       searchTerm: '',
       sortKey: '',
       sortOrder: 1,
@@ -171,10 +167,23 @@ export default {
       allItemsValue: 10000
     };
   },
+  // Loads emission data when component is created
+  async created() {
+    await this.fetchEmissionsData();
+  },
   methods: {
-    // Method to sanitize data
-    sanitize(input) {
-      return DOMPurify.sanitize(input);
+    // Asynchronous method for fetching emission data from the server
+    async fetchEmissionsData() {
+      try {
+        // API request to get the emission data
+        const response = await api.getEmissions();
+        console.log('Emission data loaded', response.data);
+        // Save the loaded data in the 'emissions' array
+        this.emissions = response.data;
+        //Troubleshooting
+      } catch (error) {
+        console.error("There was an error when fetching the emission data:", error);
+      }
     },
     // Method for sorting emissions data according to specific key
     sortBy(key) {
@@ -182,7 +191,7 @@ export default {
   this.sortKey = key;
 
 
-  this.emissionData.sort((a, b) => {
+  this.emissions.sort((a, b) => {
     switch (key) {
       case 'company':
         return (a.company < b.company ? -1 : 1) * this.sortOrder;
@@ -203,27 +212,19 @@ export default {
     }
   },
   // Observer for 'itemsPerPage': Resets the current page if the number of items per page is changed
-  watch: {
-    itemsPerPage(newVal, oldVal) {
-      if (newVal !== oldVal) {
-        this.currentPage = 1;
-      }
-    }
-  },
+  
 
   computed: {
-  sanitizedSearchTerm() {
-    return DOMPurify.sanitize(this.searchTerm);
-  },
   // Calculated property that filters the emission data based on the search term, country, and company filters
   filteredData() {
-    return this.emissionData.filter(entry =>
+    return this.emissions.filter(entry =>
       (this.filterCountry === '' || entry.country === this.filterCountry) &&
       (this.filterCompany === '' || entry.company === this.filterCompany) &&
       (entry.company.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
        entry.country.toLowerCase().includes(this.searchTerm.toLowerCase()))
     );
   },
+  
 
   // Calculated property paginating the emission data based on the current page
   paginatedData() {
@@ -240,17 +241,23 @@ export default {
 
   // Get a list of unique countries from the emission data for the country filter dropdown
   uniqueCountries() {
-    const countries = this.emissionData.map(entry => entry.country);
+    const countries = this.emissions.map(entry => entry.country);
     return [...new Set(countries)];
   },
 
   // Get a list of unique companies from the emission data for the company filter dropdown
   uniqueCompanies() {
-    const companies = this.emissionData.map(entry => entry.company);
+    const companies = this.emissions.map(entry => entry.company);
     return [...new Set(companies)];
   }
-}
-
+},
+watch: {
+    itemsPerPage(newVal, oldVal) {
+      if (newVal !== oldVal) {
+        this.currentPage = 1;
+      }
+    }
+  }
 };
 </script>
 
