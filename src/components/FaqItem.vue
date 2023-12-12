@@ -1,14 +1,18 @@
 <template>
-  <!-- Single FAQ entry displayed as accordion element -->
-  <div class="accordion-item container-fluid">
+  <div 
+    class="accordion-item container-fluid"
+    role="article"
+    :aria-posinset="pos"
+    :aria-setsize="total"
+  >
     <h2 class="accordion-header" :id="'heading' + id">
       <!-- Button that displays the question and when clicked displays/hides the answer -->
       <button
-        class="accordion-button collapsed"
+        class="accordion-button"
+        :class="{ 'collapsed': !isExpanded }"
         type="button"
-        data-bs-toggle="collapse"
-        :data-bs-target="'#collapse' + id"
-        aria-expanded="false"
+        @click="$emit('toggle')"
+        :aria-expanded="isExpanded.toString()"
         :aria-controls="'collapse' + id"
       >
         {{ question }}
@@ -18,10 +22,11 @@
     <div
       :id="'collapse' + id"
       class="accordion-collapse collapse"
+      :class="{ 'show': isExpanded }"
       :aria-labelledby="'heading' + id"
-      data-bs-parent="#faqAccordion"
+      role="region"
     >
-      <div class="accordion-body">
+      <div class="accordion-body" tabindex="0">
         {{ answer }}
       </div>
     </div>
@@ -29,28 +34,20 @@
 </template>
 
 <script>
-  // Definition of the FaqItem component representing a single FAQ entry.
-  export default {
-    // Accepted properties for the FaqItem component
-    props: {
-      id: {
-        type: Number,
-        required: true
-      },
-      question: {
-        type: String,
-        required: true
-      },
-      answer: {
-        type: String,
-        required: true
-      }
-    }
+export default {
+  props: {
+    id: Number,
+    question: String,
+    answer: String,
+    pos: Number, // Position of the entry
+    total: Number, // Total number of entries
+    isExpanded: Boolean, // Prop to control the expanded state
   }
+};
 </script>
 
 <style scoped>
 .accordion-item {
     padding: 0;
-  }
+}
 </style>

@@ -20,14 +20,16 @@
           <!-- Name field -->
           <div class="mb-3">
             <label for="name" class="form-label"
-              >Name <span class="text-danger">*</span></label
-            >
+              >Name <span class="text-danger">*</span>
+              <span class="visually-hidden">required</span>
+              </label>
             <input
               type="text"
               class="form-control"
               id="name"
               v-model="name"
               name="name"
+              aria-required="true"
               required
             />
           </div>
@@ -35,14 +37,16 @@
           <!-- Email field -->
           <div class="mb-3">
             <label for="email" class="form-label"
-              >Email address <span class="text-danger">*</span></label
-            >
+              >Email address <span class="text-danger">*</span>
+              <span class="visually-hidden">required</span>
+              </label>
             <input
               type="email"
               class="form-control"
               id="email"
               v-model="email"
               name="_replyto"
+              aria-required="true"
               required
             />
           </div>
@@ -50,8 +54,9 @@
           <!-- Text field -->
           <div class="mb-3">
             <label for="message" class="form-label"
-              >Message <span class="text-danger">*</span></label
-            >
+              >Message <span class="text-danger">*</span>
+              <span class="visually-hidden">required</span>
+              </label>
             <textarea
               class="form-control"
               id="message"
@@ -59,9 +64,13 @@
               name="message"
               maxlength="800"
               style="height: 10vh"
+              aria-required="true"
               required
             ></textarea>
-            <div class="remainingCharacters">{{ remainingCharacters }}/800</div>
+            <div class="remainingCharacters">
+              {{ remainingCharacters }}/800
+              <span class="visually-hidden">remaining Characters</span>
+            </div>
           </div>
   
           <!-- Privacy checkbox -->
@@ -71,6 +80,7 @@
               class="form-check-input"
               id="privacyCheckbox"
               v-model="privacyAccepted"
+              aria-required="true"
               required
             />
             <label class="form-check-label" for="privacyCheckbox">

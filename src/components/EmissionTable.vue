@@ -1,7 +1,9 @@
 <template>
   <div class="table container-fluid">
+
     <!-- Row for filters and search function-->
     <div class="row mb-3">
+
       <!-- Column for company filter -->
       <div class="col-md-4 mt-1">
         <select v-model="filterCompany" class="form-control">
@@ -42,12 +44,19 @@
     <table
       class="table table-bordered table-hover"
       v-if="paginatedData.length > 0"
-    >
+      aria-describedby="emissionTableDescription">
+      <caption class="caption" id="emissionTableDescription">Table with emissions data sorted by company, country and emissions</caption>
+
       <!-- Header of the table with column names and sorting icons -->
       <thead>
         <tr>
-          <!-- Clickable column header to sort by company -->
-          <th scope="col" @click="sortBy('company')">
+          <!-- Clickable column header to sort by company with dynamically updated aria-label -->
+          <th 
+            scope="col" 
+            role="button" 
+            @click="sortBy('company')" 
+            :aria-label="'Sort by company ' + (sortKey === 'company' ? (sortOrder === 1 ? 'ascending' : 'descending') : '')"
+          >
             Company
             <span v-if="sortKey === 'company' && sortOrder === 1"
               >&#x2193;</span
@@ -58,8 +67,13 @@
             <span v-if="sortKey !== 'company'">&#x2195;</span>
           </th>
 
-          <!-- Clickable column header to sort by country -->
-          <th scope="col" @click="sortBy('country')">
+          <!-- Clickable column header to sort by country with dynamically updated aria-label -->
+          <th 
+            scope="col" 
+            role="button" 
+            @click="sortBy('country')" 
+            :aria-label="'Sort by country ' + (sortKey === 'country' ? (sortOrder === 1 ? 'ascending' : 'descending') : '')"
+          >
             Country
             <span v-if="sortKey === 'country' && sortOrder === 1"
               >&#x2193;</span
@@ -70,8 +84,13 @@
             <span v-if="sortKey !== 'country'">&#x2195;</span>
           </th>
 
-          <!-- Clickable column header to sort by emissions -->
-          <th scope="col" @click="sortBy('emissions')">
+          <!-- Clickable column header to sort by emissions with dynamically updated aria-label -->
+          <th 
+            scope="col" 
+            role="button" 
+            @click="sortBy('emissions')" 
+            :aria-label="'Sort by emissions ' + (sortKey === 'emissions' ? (sortOrder === 1 ? 'ascending' : 'descending') : '')"
+          >
             Emissions (t CO₂)
             <span v-if="sortKey === 'emissions' && sortOrder === 1"
               >&#x2193;</span
@@ -110,29 +129,40 @@
     </div>
 
     <!-- Pagination component for navigating through the table pages -->
-    <ul class="pagination" v-if="paginatedData.length > 0">
-      <li class="page-item" :class="{ 'disabled': currentPage === 1 }">
-        <a class="page-link" href="#" @click.prevent="currentPage--"
-          >Previous</a
+      <ul class="pagination" v-if="paginatedData.length > 0" aria-label="Emissions data page navigation">
+        <li class="page-item" :class="{ 'disabled': currentPage === 1 }">
+          <a class="page-link" href="#" @click.prevent="currentPage--"
+             aria-label="Go to previous page"
+             :aria-disabled="currentPage === 1 ? 'true' : 'false'"
+          >
+            Previous
+          </a>
+        </li>
+        <li
+          class="page-item"
+          v-for="page in totalPages"
+          :key="page"
+          :class="{ 'active': page === currentPage }"
         >
-      </li>
-      <li
-        class="page-item"
-        v-for="page in totalPages"
-        :key="page"
-        :class="{ 'active': page === currentPage }"
-      >
-        <a
-          class="page-link"
-          href="#"
-          @click.prevent="currentPage = page"
-          >{{ page }}</a
-        >
-      </li>
-      <li class="page-item" :class="{ 'disabled': currentPage === totalPages }">
-        <a class="page-link" href="#" @click.prevent="currentPage++">Next</a>
-      </li>
-    </ul>
+          <a
+            class="page-link"
+            href="#"
+            @click.prevent="currentPage = page"
+            :aria-label="'Go to page ' + page"
+            :aria-current="page === currentPage ? 'page' : null"
+          >
+            {{ page }}
+          </a>
+        </li>
+        <li class="page-item" :class="{ 'disabled': currentPage === totalPages }">
+          <a class="page-link" href="#" @click.prevent="currentPage++"
+             aria-label="Go to next page"
+             :aria-disabled="currentPage === totalPages ? 'true' : 'false'"
+          >
+            Next
+          </a>
+        </li>
+      </ul>
 
     <div v-else class="text-danger">
       Nothing found! Please adjust your filters or search parameters.
@@ -294,6 +324,17 @@ table th:nth-child(2) {
 table th:nth-child(3) {
   width: 20%;
   cursor: pointer;
+}
+
+.caption {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
 }
 
 .pagination {
