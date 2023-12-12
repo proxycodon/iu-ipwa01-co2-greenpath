@@ -9,6 +9,7 @@ import OurVision from "@/views/OurVision.vue";
 import LegalNotice from "@/views/LegalNotice.vue";
 import TermsConditions from "@/views/TermsConditions.vue";
 import PrivacyPolicy from "@/views/PrivacyPolicy.vue";
+import NotFound from "@/views/404NotFound.vue";
 
 // Creation of the router with the defined routes
 const router = createRouter({
@@ -23,6 +24,7 @@ const router = createRouter({
         {path: "/legal-notice", name: "legal-notice", component: LegalNotice},
         {path: "/terms-conditions", name: "terms-conditions", component: TermsConditions},
         {path: "/privacy-policy", name: "privacy-policy", component: PrivacyPolicy},
+        {path: "/:catchAll(.*)", name: "404", component: NotFound},
     ],
 });
 

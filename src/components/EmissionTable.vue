@@ -251,6 +251,9 @@ export default {
     return [...new Set(companies)];
   }
 },
+// Observer for 'itemsPerPage': Resets the current page if the number of items per page is changed.
+// This is necessary to ensure that the user does not land on a blank page if the number of entries per page 
+//is greater than the total number of existing entries
 watch: {
     itemsPerPage(newVal, oldVal) {
       if (newVal !== oldVal) {

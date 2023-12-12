@@ -1,14 +1,17 @@
 <template>
   <!-- Main header component -->
   <div class="header container-fluid" :class="{ 'rtl': isRtl }">    
+
     <!-- Logo and main navigation area -->
     <div class="row align-items-center justify-content-between">
+
       <!-- Logo area -->
       <div class="col logo-col">
         <router-link to="/">
-          <img class="logo" src="@/assets/GP_Logo.svg" alt="Logo" />
+          <img class="logo" src="@/assets/GP_Logo.svg" alt="Green Path Logo" />
         </router-link>
       </div>
+
       <!-- Desktop-navigation -->
       <div class="col-auto desktop-menu">
         <nav>
@@ -34,22 +37,17 @@
     </div>
 
     <!-- Fly-out menu for mobile menu -->
-    <div :class="['flyout-menu', { 'menu-open': isMenuOpen }]">
-      <router-link to="/faq-page" class="menu-item" @click="isMenuOpen = false"
-        >FAQ</router-link
-      >
-      <router-link
-        to="/contact-us"
-        class="menu-item"
-        @click="isMenuOpen = false"
-        >Contact Us</router-link
-      >
-      <router-link
-        to="/our-vision"
-        class="menu-item"
-        @click="isMenuOpen = false"
-        >Our Vision</router-link
-      >
+    <div class="flyout-menu" :class="{ 'menu-open': isMenuOpen }">
+    <div class="menu-item" @click="linkClicked(() => $router.push('/faq-page'))">
+      FAQ
+    </div>
+    <div class="menu-item" @click="linkClicked(() => $router.push('/contact-us'))">
+      Contact Us
+    </div>
+    <div class="menu-item" @click="linkClicked(() => $router.push('/our-vision'))">
+      Our Vision
+    </div>
+
       <!-- Close icon for the fly-out menu -->
       <div class="hamburger" @click="toggleMenu">
         <img
@@ -82,7 +80,10 @@ export default {
     linkClicked(navigate) {
       this.toggleMenu();
       navigate();
-    }
+    },
+    closeMenu() {
+    this.isMenuOpen = false;
+  }
   }
 };
 </script>

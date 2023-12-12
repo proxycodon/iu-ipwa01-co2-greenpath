@@ -48,19 +48,19 @@
               <a href="https://www.instagram.com/"
                 ><img
                   src="@/assets/instagram-icon.svg"
-                  alt="Instagram"
+                  alt="Instagram Logo"
                   height="24"
               /></a>
               <a href="https://www.linkedin.com/"
                 ><img
                   src="@/assets/linkedin-icon.svg"
-                  alt="LinkedIn"
+                  alt="LinkedIn Logo"
                   height="24"
               /></a>
               <a href="https://twitter.com/"
                 ><img
                   src="@/assets/twitterx-icon.svg"
-                  alt="X (former Twitter)"
+                  alt="X Logo (former Twitter)"
                   height="24"
               /></a>
             </div>
