@@ -147,10 +147,4 @@ export default {
   .remainingCharacters {
     font-size: 14px;
   }
-
-  .titleContentPages {
-    width: 90vw;
-    padding: 20px;
-    margin: 0 auto;
-  }
 </style>

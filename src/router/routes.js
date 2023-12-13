@@ -15,7 +15,7 @@ const router = createRouter({
     { path: '/legal-notice', name: 'legal-notice', component: () => import('@/views/LegalNotice.vue') },
     { path: '/terms-conditions', name: 'terms-conditions', component: () => import('@/views/TermsConditions.vue') },
     { path: '/privacy-policy', name: 'privacy-policy', component: () => import('@/views/PrivacyPolicy.vue') },
-    { path: '/:catchAll(.*)', name: '404', component: () => import('@/views/NotFound.vue') }
+    { path: '/:catchAll(.*)', name: '404', component: () => import('@/views/404NotFound.vue') }
   ]
 })
 

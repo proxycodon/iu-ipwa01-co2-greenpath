@@ -1,6 +1,3 @@
-
-//eslintrc.js
-
 module.exports = {
   env: {
     browser: true,
@@ -9,17 +6,14 @@ module.exports = {
   extends: [
     'standard',
     'plugin:vue/vue3-essential',
-    'plugin:security/recommended',
-    'prettier'
+    'plugin:security/recommended'
   ],
   overrides: [
     {
       env: {
         node: true
       },
-      files: [
-        '.eslintrc.{js,cjs}'
-      ],
+      files: ['.eslintrc.{js,cjs}'],
       parserOptions: {
         sourceType: 'script'
       }

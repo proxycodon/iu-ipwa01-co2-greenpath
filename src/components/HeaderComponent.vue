@@ -166,26 +166,6 @@ export default {
   right: 0;
 }
 
-/* RTL Styling */
-[dir="rtl"] .flyout-menu {
-  right: auto;
-  left: -100%;
-  transition: left 0.3s ease;
-}
-
-[dir="rtl"] .menu-open {
-  left: 0;
-}
-
-[dir="rtl"] .hamburger {
-  right: auto;
-  left: 20px;
-}
-
-[dir="rtl"] img.rotated {
-  left: 20px;
-}
-
 @media (max-width: 880px) {
   .row {
     flex-wrap: nowrap;

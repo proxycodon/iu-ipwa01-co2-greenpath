@@ -1,172 +1,35 @@
 <template>
-  <div class="table container-fluid">
+  <div class="container-fluid">
 
-    <!-- Row for filters and search function-->
-    <div class="row mb-3">
+     <!-- Integration of FilterBar component  -->
+     <filter-bar
+      :unique-companies="uniqueCompanies"
+      :unique-countries="uniqueCountries"
+      :filter-company="filterCompany"
+      :filter-country="filterCountry"
+      :search-term="searchTerm"
+      @update:filterCompany="filterCompany = $event"
+      @update:filterCountry="filterCountry = $event"
+      @update:searchTerm="searchTerm = $event"
+    ></filter-bar>
 
-      <!-- Column for company filter -->
-      <div class="col-md-4 mt-1">
-        <select v-model="filterCompany" class="form-control">
-          <option value="">All Companies</option>
-          <option
-            v-for="company in uniqueCompanies"
-            :key="company"
-            :value="company"
-          >
-            {{ company }}
-          </option>
-        </select>
-      </div>
-      <!-- Column for country filter -->
-      <div class="col-md-4 mt-1">
-        <select v-model="filterCountry" class="form-control">
-          <option value="">All Countries</option>
-          <option
-            v-for="country in uniqueCountries"
-            :key="country"
-            :value="country"
-          >
-            {{ country }}
-          </option>
-        </select>
-      </div>
-      <!-- Column for search input -->
-      <div class="col-md-4 mt-1">
-        <input
-          type="text"
-          v-model="searchTerm"
-          placeholder="Search for..."
-          class="form-control"
-        />
-      </div>
-    </div>
-    <!-- Table is only displayed if there is data to display -->
-    <table
-      class="table table-bordered table-hover"
-      v-if="paginatedData.length > 0"
-      aria-describedby="emissionTableDescription">
-      <caption class="caption" id="emissionTableDescription">Table with emissions data sorted by company, country and emissions</caption>
+    <!-- Integration of DataTable component  -->
+    <data-table
+      :paginated-data="paginatedData"
+      :sort-key="sortKey"
+      :sort-order="sortOrder"
+      :sort-by="sortBy"
+      :format-number="formatNumber"
+    ></data-table>
 
-      <!-- Header of the table with column names and sorting icons -->
-      <thead>
-        <tr>
-          <!-- Clickable column header to sort by company with dynamically updated aria-label -->
-          <th
-            scope="col"
-            role="button"
-            @click="sortBy('company')"
-            :aria-label="'Sort by company ' + (sortKey === 'company' ? (sortOrder === 1 ? 'ascending' : 'descending') : '')"
-          >
-            Company
-            <span v-if="sortKey === 'company' && sortOrder === 1"
-              >&#x2193;</span
-            >
-            <span v-if="sortKey === 'company' && sortOrder === -1"
-              >&#x2191;</span
-            >
-            <span v-if="sortKey !== 'company'">&#x2195;</span>
-          </th>
-
-          <!-- Clickable column header to sort by country with dynamically updated aria-label -->
-          <th
-            scope="col"
-            role="button"
-            @click="sortBy('country')"
-            :aria-label="'Sort by country ' + (sortKey === 'country' ? (sortOrder === 1 ? 'ascending' : 'descending') : '')"
-          >
-            Country
-            <span v-if="sortKey === 'country' && sortOrder === 1"
-              >&#x2193;</span
-            >
-            <span v-if="sortKey === 'country' && sortOrder === -1"
-              >&#x2191;</span
-            >
-            <span v-if="sortKey !== 'country'">&#x2195;</span>
-          </th>
-
-          <!-- Clickable column header to sort by emissions with dynamically updated aria-label -->
-          <th
-            scope="col"
-            role="button"
-            @click="sortBy('emissions')"
-            :aria-label="'Sort by emissions ' + (sortKey === 'emissions' ? (sortOrder === 1 ? 'ascending' : 'descending') : '')"
-          >
-            Emissions (t CO₂)
-            <span v-if="sortKey === 'emissions' && sortOrder === 1"
-              >&#x2193;</span
-            >
-            <span v-if="sortKey === 'emissions' && sortOrder === -1"
-              >&#x2191;</span
-            >
-            <span v-if="sortKey !== 'emissions'">&#x2195;</span>
-          </th>
-        </tr>
-      </thead>
-
-      <!-- Body of the table showing the emission data and country for each company -->
-      <tbody>
-        <tr v-for="entry in paginatedData" :key="entry.id">
-          <td>{{ entry.company }}</td>
-          <td>{{ entry.country }}</td>
-          <td>{{ formatNumber(entry.emissions) }}</td>
-        </tr>
-      </tbody>
-    </table>
-    <!-- Row for items per page selection -->
-    <div class="row mt-3 justify-content-start">
-      <div class="col-md-2">
-        <select
-          id="entriesPerPageSelect"
-          v-model="itemsPerPage"
-          class="form-control"
-        >
-          <option value="10">10 Entries per page</option>
-          <option value="50">50 Entries per page</option>
-          <option value="100">100 Entries per page</option>
-          <option :value="allItemsValue">All Entries</option>
-        </select>
-      </div>
-    </div>
-
-    <!-- Pagination component for navigating through the table pages -->
-      <ul class="pagination" v-if="paginatedData.length > 0" aria-label="Emissions data page navigation">
-        <li class="page-item" :class="{ 'disabled': currentPage === 1 }">
-          <a class="page-link" href="#" @click.prevent="currentPage--"
-             aria-label="Go to previous page"
-             :aria-disabled="currentPage === 1 ? 'true' : 'false'"
-          >
-            Previous
-          </a>
-        </li>
-        <li
-          class="page-item"
-          v-for="page in totalPages"
-          :key="page"
-          :class="{ 'active': page === currentPage }"
-        >
-          <a
-            class="page-link"
-            href="#"
-            @click.prevent="currentPage = page"
-            :aria-label="'Go to page ' + page"
-            :aria-current="page === currentPage ? 'page' : null"
-          >
-            {{ page }}
-          </a>
-        </li>
-        <li class="page-item" :class="{ 'disabled': currentPage === totalPages }">
-          <a class="page-link" href="#" @click.prevent="currentPage++"
-             aria-label="Go to next page"
-             :aria-disabled="currentPage === totalPages ? 'true' : 'false'"
-          >
-            Next
-          </a>
-        </li>
-      </ul>
-
-    <div v-else class="text-danger">
-      Nothing found! Please adjust your filters or search parameters.
-    </div>
+    <!-- Integration of PaginationComponent -->
+    <pagination-component
+      :total-pages="totalPages"
+      :current-page="currentPage"
+      :all-items-value="allItemsValue"
+      @update:itemsPerPage="itemsPerPage = $event"
+      @update:currentPage="currentPage = $event"
+    ></pagination-component>
 
     <div class="row mt-3 justify-content-center">
     <div class="col-md-4 text-center">
@@ -180,10 +43,17 @@
 </template>
 
 <script>
-// Import API for communication with the backend
 import api from '@/services/api'
+import FilterBar from './FilterBar.vue'
+import DataTable from './DataComponent.vue'
+import PaginationComponent from './PaginationComponent.vue'
 
 export default {
+  components: {
+    FilterBar,
+    DataTable,
+    PaginationComponent
+  },
   data () {
     return {
       emissions: [],
@@ -233,10 +103,9 @@ export default {
         }
       })
     },
+    // Method for formatting numbers with thousands separators
     formatNumber (value) {
-      // Method for formatting numbers with thousands separators
-      // Disable the ESLint warning for this particular line because the regular expression is safe
-      return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+      return new Intl.NumberFormat('en-US').format(value)
     }
   },
   // Observer for 'itemsPerPage': Resets the current page if the number of items per page is changed
@@ -246,9 +115,9 @@ export default {
     filteredData () {
       return this.emissions.filter(entry =>
         (this.filterCountry === '' || entry.country === this.filterCountry) &&
-      (this.filterCompany === '' || entry.company === this.filterCompany) &&
-      (entry.company.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-       entry.country.toLowerCase().includes(this.searchTerm.toLowerCase()))
+        (this.filterCompany === '' || entry.company === this.filterCompany) &&
+        (entry.company.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+         entry.country.toLowerCase().includes(this.searchTerm.toLowerCase()))
       )
     },
 
@@ -291,7 +160,7 @@ export default {
 </script>
 
 <style scoped>
-.table {
+.container-fluid {
   border-radius: 10px;
   overflow: hidden;
   padding: 20px;
@@ -303,52 +172,8 @@ export default {
   height: 100%;
 }
 
-.table-hover {
-  width: 100%;
-}
-
-table th:nth-child(1) {
-  width: 20%;
-  cursor: pointer;
-}
-
-table th:nth-child(2) {
-  width: 20%;
-  cursor: pointer;
-}
-
-table th:nth-child(3) {
-  width: 20%;
-  cursor: pointer;
-}
-
-.caption {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
-}
-
-.pagination {
-  justify-content: center;
-  margin: 0 auto;
-  padding-top: 20px;
-}
-
 .report-bug-button {
     background-color: #dc3545;
     color: white;
   }
-
-@media (max-width: 880px) {
-  .table th,
-  .table td {
-    padding: 0.3rem;
-    font-size: 0.8rem;
-  }
-}
 </style>

@@ -59,11 +59,6 @@ export default {
 </script>
 
 <style scoped>
-  .vision-wrapper {
-    width: 90vw;
-    padding: 20px;
-    margin: 0 auto;
-  }
   .accordion {
     overflow: hidden;
     padding: 20px;
@@ -72,11 +67,5 @@ export default {
     overflow-y: auto;
     background-color: #344e41;
     height: 100%;
-  }
-
-  .titleContentPages {
-    width: 90vw;
-    padding: 20px;
-    margin: 0 auto;
   }
 </style>
