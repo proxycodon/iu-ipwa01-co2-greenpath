@@ -27,10 +27,10 @@
       <p>Source: eRecht24</p>
     </div>
   </template>
-  
-  <script>
-  // Vue.js view definition
-  export default {
-    name: 'LegalNotice'
-  }
-  </script>
+
+<script>
+// Vue.js view definition
+export default {
+  name: 'LegalNotice'
+}
+</script>

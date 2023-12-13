@@ -1,5 +1,5 @@
 <template>
-  <div 
+  <div
     class="accordion-item container-fluid"
     role="article"
     :aria-posinset="pos"
@@ -41,9 +41,9 @@ export default {
     answer: String,
     pos: Number, // Position of the entry
     total: Number, // Total number of entries
-    isExpanded: Boolean, // Prop to control the expanded state
+    isExpanded: Boolean // Prop to control the expanded state
   }
-};
+}
 </script>
 
 <style scoped>

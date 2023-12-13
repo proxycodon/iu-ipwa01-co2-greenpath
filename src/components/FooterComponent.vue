@@ -73,8 +73,8 @@
 
 <script>
 export default {
-  name: "FooterComponent"
-};
+  name: 'FooterComponent'
+}
 </script>
 
 <style scoped>
@@ -93,7 +93,7 @@ export default {
 }
 
 .footer-svg img {
-    max-width: 80%; 
+    max-width: 80%;
 }
 
 .address {

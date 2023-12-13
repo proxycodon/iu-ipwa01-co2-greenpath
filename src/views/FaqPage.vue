@@ -4,60 +4,60 @@
     <!-- Bootstrap accordion container for FAQ elements -->
     <div class="accordion" id="faqAccordion">
       <!-- Go through all FAQ data and display each FAQ entry as an accordion element -->
-      <FaqItem
-        v-for="(item, index) in faqs"
-        :key="item.id"
-        :id="item.id"
-        :isExpanded="expandedItem === item.id"
-        :question="item.question"
-        :answer="item.answer"
-        :pos="index + 1" 
+      <FaqComponent
+        v-for="(Component, index) in faqs"
+        :key="Component.id"
+        :id="Component.id"
+        :isExpanded="expandedComponent === Component.id"
+        :question="Component.question"
+        :answer="Component.answer"
+        :pos="index + 1"
         :total="faqs.length"
-        @toggle="toggleItem(item.id)"
+        @toggle="toggleComponent(Component.id)"
       />
     </div>
   </div>
 </template>
 
 <script>
-// Import FAQ item component and API
-import FaqItem from '@/components/FaqItem.vue';
-import api from '@/services/api';
+// Import FAQ Component component and API
+import FaqComponent from '@/components/FaqComponent.vue'
+import api from '@/services/api'
 
 export default {
   components: {
-    FaqItem
+    FaqComponent
   },
-  data() {
+  data () {
     return {
       // Array for saving the FAQ data
       faqs: [],
-      expandedItem: null, // Track the expanded item
-    };
+      expandedComponent: null // Track the expanded Component
+    }
   },
   // Loads FAQ data when component is created
-  async created() {
-    await this.fetchFaqsData();
+  async created () {
+    await this.fetchFaqsData()
   },
   methods: {
     // Method to fetch FAQ data
-    async fetchFaqsData() {
+    async fetchFaqsData () {
       try {
-        const response = await api.getFaqs();
-        console.log('FAQ data loaded', response.data);
-        this.faqs = response.data;
+        const response = await api.getFaqs()
+        console.log('FAQ data loaded', response.data)
+        this.faqs = response.data
       } catch (error) {
-        console.error("There was an error fetching the FAQ data", error);
+        console.error('There was an error fetching the FAQ data', error)
       }
     },
-    // Toggle the expanded item
-    toggleItem(id) {
-      this.expandedItem = this.expandedItem === id ? null : id;
-    },
+    // Toggle the expanded Component
+    toggleComponent (id) {
+      this.expandedComponent = this.expandedComponent === id ? null : id
+    }
   }
-};
+}
 </script>
-  
+
 <style scoped>
   .vision-wrapper {
     width: 90vw;
@@ -73,7 +73,7 @@ export default {
     background-color: #344e41;
     height: 100%;
   }
-  
+
   .titleContentPages {
     width: 90vw;
     padding: 20px;

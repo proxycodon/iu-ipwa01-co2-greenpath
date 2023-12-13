@@ -288,11 +288,10 @@
       </ul>
     </div>
   </template>
-  
-  <script>
-  // Vue.js view definition
-  export default {
-    name: 'TermsConditions'
-  }
-  </script>
-  
+
+<script>
+// Vue.js view definition
+export default {
+  name: 'TermsConditions'
+}
+</script>

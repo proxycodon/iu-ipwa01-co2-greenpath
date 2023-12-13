@@ -17,7 +17,7 @@
 
 <script>
 // Import the required components
-import EmissionTable from '@/components/EmissionTable.vue';
+import EmissionTable from '@/components/EmissionTable.vue'
 
 export default {
   // Definition of the components used

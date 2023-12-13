@@ -1,6 +1,6 @@
 <template>
   <!-- Main header component -->
-  <div class="header container-fluid" :class="{ 'rtl': isRtl }">    
+  <div class="header container-fluid" :class="{ 'rtl': isRtl }">
 
     <!-- Logo and main navigation area -->
     <div class="row align-items-center justify-content-between">
@@ -64,28 +64,28 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       isMenuOpen: false,
       isRtl: this.$root.alignment === 'rtl'
-    };
+    }
   },
- 
+
   methods: {
     // Switching the menu stage (open/closed)
-    toggleMenu() {
-      this.isMenuOpen = !this.isMenuOpen;
+    toggleMenu () {
+      this.isMenuOpen = !this.isMenuOpen
     },
     // Navigate to a link and close the menu
-    linkClicked(navigate) {
-      this.toggleMenu();
-      navigate();
+    linkClicked (navigate) {
+      this.toggleMenu()
+      navigate()
     },
-    closeMenu() {
-    this.isMenuOpen = false;
+    closeMenu () {
+      this.isMenuOpen = false
+    }
   }
-  }
-};
+}
 </script>
 
 <style scoped>
@@ -185,7 +185,6 @@ export default {
 [dir="rtl"] img.rotated {
   left: 20px;
 }
-
 
 @media (max-width: 880px) {
   .row {

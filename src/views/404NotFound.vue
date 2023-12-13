@@ -5,10 +5,10 @@
     <router-link to="/" class="home-link">Back to the homepage</router-link>
   </div>
   </template>
-  
-  <script>
-  // Vue.js view definition
-  export default {
-    name: '404NotFound'
-  }
-  </script>
+
+<script>
+// Vue.js view definition
+export default {
+  name: '404NotFound'
+}
+</script>

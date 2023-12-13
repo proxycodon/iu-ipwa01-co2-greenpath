@@ -9,18 +9,18 @@
 </template>
 
 <script setup>
-import { computed, ref } from 'vue';
-import HeaderComponent from './components/HeaderComponent.vue';
-import FooterComponent from './components/FooterComponent.vue';
+import { computed, ref } from 'vue'
+import HeaderComponent from './components/HeaderComponent.vue'
+import FooterComponent from './components/FooterComponent.vue'
 
 // Checking the user language and adjusting RTL if required
-const rtlLanguages = ["ar", "arc", "dv", "fa", "ha", "he", "khw", "ks", "ku", "ps", "ur", "yi"];
+const rtlLanguages = ['ar', 'arc', 'dv', 'fa', 'ha', 'he', 'khw', 'ks', 'ku', 'ps', 'ur', 'yi']
 
-const language = ref(navigator.language || navigator.userLanguage);
+const language = ref(navigator.language || navigator.userLanguage)
 
 const alignment = computed(() => {
-  return rtlLanguages.includes(language.value.split('-')[0]) ? 'rtl' : 'ltr';
-});
+  return rtlLanguages.includes(language.value.split('-')[0]) ? 'rtl' : 'ltr'
+})
 </script>
 
 <style>
@@ -68,7 +68,7 @@ h3 {
     color: white;
     margin: 20px;
 }
-  
+
   .vision-wrapper {
     width: 90vw;
     border-radius: 10px;
@@ -76,7 +76,7 @@ h3 {
     margin: 0 auto;
     background-color: #344e41;
   }
-  
+
   .titleContentPages {
     width: 90vw;
     padding: 20px;

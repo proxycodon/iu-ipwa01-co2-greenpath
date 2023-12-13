@@ -1,32 +1,23 @@
-// Import the required functions and modules from Vue.js router
-import { createRouter, createWebHistory } from "vue-router";
-
-// Import the individual Vue.js views to be routed
-import HomePage from "@/views/HomePage.vue";
-import FaqPage from "@/views/FaqPage.vue";
-import ContactUs from "@/views/ContactUs.vue";
-import OurVision from "@/views/OurVision.vue";
-import LegalNotice from "@/views/LegalNotice.vue";
-import TermsConditions from "@/views/TermsConditions.vue";
-import PrivacyPolicy from "@/views/PrivacyPolicy.vue";
-import NotFound from "@/views/404NotFound.vue";
+// Import the required functions from Vue.js router
+import { createRouter, createWebHistory } from 'vue-router'
 
 // Creation of the router with the defined routes
 const router = createRouter({
-    // Using WebHistory for the routes
-    history: createWebHistory(),
-    routes: [
-        // Definition of the individual routes and assignment to the Vue.js views
-        {path: "/", name: "index", component: HomePage},
-        {path: "/faq-page", name: "faq", component: FaqPage},
-        {path: "/contact-us", name: "contact-us", component: ContactUs},
-        {path: "/our-vision", name: "our-vision", component: OurVision},
-        {path: "/legal-notice", name: "legal-notice", component: LegalNotice},
-        {path: "/terms-conditions", name: "terms-conditions", component: TermsConditions},
-        {path: "/privacy-policy", name: "privacy-policy", component: PrivacyPolicy},
-        {path: "/:catchAll(.*)", name: "404", component: NotFound},
-    ],
-});
+// Using WebHistory for the routes
+  history: createWebHistory(),
+  routes: [
+  // Definition of the individual routes and assignment to the Vue.js views
+  // Using lazy loading routes for a better perfomance
+    { path: '/', name: 'index', component: () => import('@/views/HomePage.vue') },
+    { path: '/faq-page', name: 'faq', component: () => import('@/views/FaqPage.vue') },
+    { path: '/contact-us', name: 'contact-us', component: () => import('@/views/ContactUs.vue') },
+    { path: '/our-vision', name: 'our-vision', component: () => import('@/views/OurVision.vue') },
+    { path: '/legal-notice', name: 'legal-notice', component: () => import('@/views/LegalNotice.vue') },
+    { path: '/terms-conditions', name: 'terms-conditions', component: () => import('@/views/TermsConditions.vue') },
+    { path: '/privacy-policy', name: 'privacy-policy', component: () => import('@/views/PrivacyPolicy.vue') },
+    { path: '/:catchAll(.*)', name: '404', component: () => import('@/views/NotFound.vue') }
+  ]
+})
 
 // Export the created router for use in other parts of the application
-export default router;
+export default router

@@ -3,9 +3,9 @@
         <h1 class="titleContentPages">Contact Us</h1>
       <div class="introText">
       <p>
-        Do you have any questions, suggestions or have you discovered an error? Do not hesitate to contact us. 
-        Our team is always happy to help and will get back to you shortly. 
-        Your feedback is important to us and helps us to continuously improve our service. 
+        Do you have any questions, suggestions or have you discovered an error? Do not hesitate to contact us.
+        Our team is always happy to help and will get back to you shortly.
+        Your feedback is important to us and helps us to continuously improve our service.
         We look forward to hearing from you!
       </p>
     </div>
@@ -33,7 +33,7 @@
               required
             />
           </div>
-  
+
           <!-- Email field -->
           <div class="mb-3">
             <label for="email" class="form-label"
@@ -50,7 +50,7 @@
               required
             />
           </div>
-  
+
           <!-- Text field -->
           <div class="mb-3">
             <label for="message" class="form-label"
@@ -72,7 +72,7 @@
               <span class="visually-hidden">remaining Characters</span>
             </div>
           </div>
-  
+
           <!-- Privacy checkbox -->
           <div class="form-check mb-3">
             <input
@@ -90,52 +90,52 @@
               >. <span class="text-danger">*</span>
             </label>
           </div>
-  
+
           <p class="text-danger">* Mandatory field</p>
-  
+
           <!-- Submit Button -->
           <button type="submit" class="btn btn-primary">Send</button>
         </form>
       </div>
     </div>
   </template>
-  
-  <script>
-  export default {
-      // Initial values for the contact page data
-      data() {
-          return {
-              name: "",
-              email: "",
-              message: "",
-              privacyAccepted: false
-          };
-      },
-      computed: {
-          // Calculates remaining number of characters the user can enter based on a limit of 800 characters
-          remainingCharacters() {
-              return 800 - this.message.length;
-          }
-      },
-      methods: {
-          // Submitting the contact form and updating the 'submitted' status
-          submitForm() {
-              if (!this.privacyAccepted) {
-                  alert("Please accept the privacy policy.");
-                  return;
-              }
-              // Using vue.js $refs against XSS
-              this.$refs.contactForm.submit();
-          }
+
+<script>
+export default {
+  // Initial values for the contact page data
+  data () {
+    return {
+      name: '',
+      email: '',
+      message: '',
+      privacyAccepted: false
+    }
+  },
+  computed: {
+    // Calculates remaining number of characters the user can enter based on a limit of 800 characters
+    remainingCharacters () {
+      return 800 - this.message.length
+    }
+  },
+  methods: {
+    // Submitting the contact form and updating the 'submitted' status
+    submitForm () {
+      if (!this.privacyAccepted) {
+        alert('Please accept the privacy policy.')
+        return
       }
-  };
-  </script>
-  
+      // Using vue.js $refs against XSS
+      this.$refs.contactForm.submit()
+    }
+  }
+}
+</script>
+
 <style scoped>
 .contact-form-wrapper {
     color: white;
   }
-  
+
   .contact-form {
     width: 90vw;
     border-radius: 10px;
@@ -143,11 +143,11 @@
     margin: 0 auto;
     background-color: #344e41;
   }
-  
+
   .remainingCharacters {
     font-size: 14px;
   }
-  
+
   .titleContentPages {
     width: 90vw;
     padding: 20px;

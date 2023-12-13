@@ -432,10 +432,10 @@
       </ul>
     </div>
   </template>
-  
-  <script>
-  // Vue.js view definition
-  export default {
-    name: 'PrivacyPolicy'
-  }
-  </script>
+
+<script>
+// Vue.js view definition
+export default {
+  name: 'PrivacyPolicy'
+}
+</script>
