@@ -32,13 +32,12 @@
     ></pagination-component>
 
     <div class="row mt-3 justify-content-center">
-    <div class="col-md-4 text-center">
-      <router-link to="/contact-us" class="btn btn-danger report-bug-button">
-        Report an Error
-      </router-link>
-
+      <div class="col-md-4 text-center">
+        <router-link to="/contact-us" class="btn btn-danger report-bug-button">
+          Report an Error
+        </router-link>
+      </div>
     </div>
-  </div>
   </div>
 </template>
 
@@ -108,7 +107,6 @@ export default {
       return new Intl.NumberFormat('en-US').format(value)
     }
   },
-  // Observer for 'itemsPerPage': Resets the current page if the number of items per page is changed
 
   computed: {
   // Calculated property that filters the emission data based on the search term, country, and company filters

@@ -39,9 +39,9 @@ export default {
     id: Number,
     question: String,
     answer: String,
-    pos: Number, // Position of the entry
-    total: Number, // Total number of entries
-    isExpanded: Boolean // Prop to control the expanded state
+    pos: Number,
+    total: Number,
+    isExpanded: Boolean
   }
 }
 </script>
