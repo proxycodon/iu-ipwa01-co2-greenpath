@@ -71,15 +71,15 @@ export default {
     await this.fetchEmissionsData()
   },
   methods: {
-    // Asynchronous method for fetching emission data from the server
+  // Asynchronous method for fetching emission data from the server
     async fetchEmissionsData () {
       try {
-        // API request to get the emission data
+      // API request to get the emission data
         const response = await api.getEmissions()
-        console.log('Emission data loaded', response.data)
+        console.log('Emission data loaded', response)
         // Save the loaded data in the 'emissions' array
-        this.emissions = response.data
-        // Troubleshooting
+        this.emissions = response
+      // Troubleshooting
       } catch (error) {
         console.error('There was an error when fetching the emission data:', error)
       }

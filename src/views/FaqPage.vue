@@ -1,8 +1,10 @@
 <template>
   <h1 class="titleContentPages">FAQs</h1>
   <div class="vision-wrapper text-white px-2">
+
     <!-- Bootstrap accordion container for FAQ elements -->
     <div class="accordion" id="faqAccordion">
+
       <!-- Go through all FAQ data and display each FAQ entry as an accordion element -->
       <FaqComponent
         v-for="(Component, index) in faqs"
@@ -20,6 +22,7 @@
 </template>
 
 <script>
+
 // Import FAQ Component component and API
 import FaqComponent from '@/components/FaqComponent.vue'
 import api from '@/services/api'
@@ -44,8 +47,8 @@ export default {
     async fetchFaqsData () {
       try {
         const response = await api.getFaqs()
-        console.log('FAQ data loaded', response.data)
-        this.faqs = response.data
+        console.log('FAQ data loaded', response)
+        this.faqs = response
       } catch (error) {
         console.error('There was an error fetching the FAQ data', error)
       }

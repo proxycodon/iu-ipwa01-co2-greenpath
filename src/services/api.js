@@ -1,14 +1,29 @@
-// Import Axios for HTTP requests
-import axios from 'axios'
-
 const BASE_URL = 'http://localhost:3000/api'
 
 // GET-Request to API endpoints
 export default {
-  getFaqs () {
-    return axios.get(`${BASE_URL}/faqs`)
+  async getFaqs () {
+    try {
+      const response = await fetch(`${BASE_URL}/faqs`)
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`)
+      }
+      return response.json()
+    } catch (error) {
+      console.error('Error fetching FAQs:', error)
+      throw error
+    }
   },
-  getEmissions () {
-    return axios.get(`${BASE_URL}/emissions`)
+  async getEmissions () {
+    try {
+      const response = await fetch(`${BASE_URL}/emissions`)
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`)
+      }
+      return response.json()
+    } catch (error) {
+      console.error('Error fetching Emissions:', error)
+      throw error
+    }
   }
 }
